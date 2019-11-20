@@ -14,57 +14,44 @@
             </div>
         </div>
         <ul class="nav" id="side-menu">
-            <!-- QUERY MENU -->
-            <?php
-            $role_id = $this->session->userdata('role_id');
-            $queryMenu = "SELECT `user_menu`.`id`, `menu`
-                            FROM `user_menu` JOIN `user_access_menu`
-                            ON `user_menu`.`id` = `user_access_menu`.`menu_id`
-                            WHERE `user_access_menu`.`role_id` = $role_id 
-                            AND `active` = 1
-                            ORDER BY `user_menu`. `nomor` ASC 
-                            ";
+             <li class="sidebar-search hidden-sm hidden-md hidden-lg">
+                        <!-- input-group -->
+                        <div class="input-group custom-search-form">
+                            <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
+            <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
+            </span> </div>
+                        <!-- /input-group -->
+             </li>
+             
+                    <li> <a href="administrator" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="m"></i> <span class="hide-menu"> DASHBOARD </span>  </a>
 
-            $menu = $this->db->query($queryMenu)->result_array();
+                    <li class="nav-small-cap m-t-10">- -Master Data</li>
+                    <li> <a href="kategori" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="&#xe001;"></i> <span class="hide-menu"> Kategori </span>  </span></span></a>     
+                    </li>
+                     <li> <a href="supplier" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="A"></i> <span class="hide-menu"> Supplier </span>  </span></span></a>     
+                    </li>
+                     <li> <a href="mbarang" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="Z"></i> <span class="hide-menu"> Barang </span>  </span></span></a>     
+                    </li>
+            
+             </li>
+                    <li class="nav-small-cap m-t-10">- -Transaksi</li>
+                    <li> <a href="index.html" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="Z"></i> <span class="hide-menu"> Barang Masuk </span>  </span></span></a>     
+                    </li>
+                     <li> <a href="index.html" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="&"></i> <span class="hide-menu"> Barang Keluar </span>  </span></span></a>    
 
-            ?>
-
-            <!-- LOOPING MENU -->
-
-
-            <li class="sidebar-search hidden-sm hidden-md hidden-lg">
-                <!-- input-group -->
-                <div class="input-group custom-search-form">
-                    <input type="text" class="form-control" placeholder="Search..."> <span class="input-group-btn">
-                        <button class="btn btn-default" type="button"> <i class="fa fa-search"></i> </button>
-                    </span> </div>
-                <!-- /input-group -->
-            </li>
-            <?php foreach ($menu as $m) : ?>
-                <!-- <li class="nav-small-cap m-t-10 fa-fw"> <?= $m['menu']; ?></li> -->
-
-                <!-- SIAPKAN SUB-MENU SESUAI MENU -->
-
-                <?php
-                    $menuId = $m['id'];
-                    $querySubMenu = " SELECT *
-                                FROM `user_sub_menu` 
-                                WHERE `menu_id` = $menuId
-                                AND `is_active` = 1";
-
-                    $subMenu = $this->db->query($querySubMenu)->result_array();
-                    ?>
-                <?php foreach ($subMenu as $sm) : ?>
-
-                    <li> <a href="<?= base_url($sm['url']); ?>" class="waves-effect"><i class="<?= $sm['icon']; ?>"></i> <span class="hide-menu"> <?= $sm['title']; ?> </span></a>
-
+             </li>
+                    <li class="nav-small-cap m-t-10">- -Data</li>
+                    <li> <a href="dbarang" class="waves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="A"></i> <span class="hide-menu"> Data Barang </span>  </span></span></a>     
+                    </li>
+                     <li> <a href="index.html" class="waves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="y"></i> <span class="hide-menu"> Transaksi Barang Masuk </span>  </span></span></a>     
                     </li>
 
+                     <li><a href="<?= base_url('auth') ?>" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log Out</span></a></li>
 
-                <?php endforeach; ?>
-            <?php endforeach ?>
 
-            <li><a href="<?= base_url('auth') ?>" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log Out</span></a></li>
+
+
+                
 
     </div>
 </div>
