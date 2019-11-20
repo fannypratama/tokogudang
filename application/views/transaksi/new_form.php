@@ -48,7 +48,7 @@ $hasil_10 = acakangka(1);
 
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-lg-12">
                 <div class="white-box">
                     <div class="row">
                         <div class="col-sm-12 col-xs-12">
@@ -57,75 +57,36 @@ $hasil_10 = acakangka(1);
                                     <?php echo $this->session->flashdata('success'); ?>
                                 </div>
                             <?php endif; ?>
-                            <form action="<?php base_url('kategori/add') ?>" method="post" enctype="multipart/form-data">
-
-
-
-
+                            <form action="<?php base_url('supplier/add') ?>" method="post" enctype="multipart/form-data">
+                                <input class="form-control <?php echo form_error('kode_supplier') ? 'is-invalid' : '' ?>" type="hidden" name="kode_supplier" placeholder="Kode Supplier" value="<?= $hasil_1, $hasil_2, $hasil_3, $hasil_4, $hasil_5, $hasil_6, $hasil_7, $hasil_8, $hasil_9, $hasil_10; ?>" />
 
                                 <div class="form-group">
-                                    <label for="tanggal_transaksi">tanggal_transaksi*</label>
+                                    <label for="nama_barang">Nama Barang</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <input type="text" class="form-control mydatepicker <?php echo form_error('tanggal_transaksi') ? 'is-invalid' : '' ?>" name="tanggal_transaksi" placeholder="mm/dd/yyyy"> <span class="input-group-addon"><i class="icon-calender"></i></span>
+                                        <input class="form-control <?php echo form_error('nama_barang') ? 'is-invalid' : '' ?>" type="text" name="nama_barang" placeholder="Nama Barang" />
                                     </div>
                                     <div class="invalid-feedback">
-                                        <?php echo form_error('tanggal_transaksi') ?>
-                                    </div>
-                                </div>
-                                <input class="form-control <?php echo form_error('no_transaksi') ? 'is-invalid' : '' ?>" type="hidden" name="no_transaksi" placeholder="Nomor Transaksi" value="<?= $hasil_1, $hasil_2, $hasil_3, $hasil_4, $hasil_5, $hasil_6, $hasil_7, $hasil_8, $hasil_9, $hasil_10; ?>" />
-                                <div class="form-group">
-                                    <label for="qty">Quantity</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <input class="form-control <?php echo form_error('qty') ? 'is-invalid' : '' ?>" type="number" name="qty" placeholder="Nomor Transaksi" />
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <?php echo form_error('qty') ?>
+                                        <?php echo form_error('nama_barang') ?>
                                     </div>
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="supplier">Quantity</label>
+                                    <label for="nama">Nilai System</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <select name="kode_mbarang" id="kode_mbarang" class="form-control">
-                                            <option value="">Select Kode master barang</option>
-                                            <?php foreach ($mbarang as $mb) : ?>
-                                                <option value="<?php echo $mb->kode_mbarang ?>"><?php echo $mb->kode_mbarang ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="supplier">Supplier</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <select name="kode_supplier" id="kode_supplier" class="form-control">
-                                            <option value="">Select Supplier</option>
-                                            <?php foreach ($supplier as $sp) : ?>
-                                                <option value="<?php echo $sp->kode_supplier ?>"><?php echo $sp->kode_supplier ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-
-                                <div class="form-group">
-                                    <label for="status">status</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <input class="form-control <?php echo form_error('status') ? 'is-invalid' : '' ?>" type="text" name="status" placeholder="Status" />
+                                        <input class="form-control <?php echo form_error('nilai') ? 'is-invalid' : '' ?>" type="number" name="nilai" placeholder="Nilai" />
                                     </div>
                                     <div class="invalid-feedback">
-                                        <?php echo form_error('status') ?>
+                                        <?php echo form_error('nilai') ?>
                                     </div>
                                 </div>
+                                
 
 
                                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="btn" value="Save">Submit</button>
                                 <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
                             </form>
-
 
                         </div>
                     </div>
@@ -133,3 +94,10 @@ $hasil_10 = acakangka(1);
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>

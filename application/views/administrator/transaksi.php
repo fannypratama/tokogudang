@@ -1,25 +1,14 @@
 <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row bg-title">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title"></h4>
-                    </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <ol class="breadcrumb">
+    <div class="container-fluid">
+        <!-- DataTables -->
 
-                            <li class="active">Transaksir</li>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0"><?= $title; ?></h3>
 
-                        </ol>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-    <div class="col-sm-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading"><?= $title; ?>
-                                <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
-                            </div>
                     <div class="card-header">
-                        <a href="<?php echo base_url('transaksi/add') ?>"><i class="fa fa-plus"></i> Add New Transaksi</a>
+                        <a href="<?php echo base_url('transaksi/add') ?>"><i class="fa fa-plus"></i> Add New</a>
 
                     </div>
 
@@ -28,48 +17,30 @@
                             <thead>
                                 <tr>
                                     <th>ID Transaksi</th>
-                                    <th>Date Create</th>
-                                    <th>Tanggal Transaksi</th>
-                                    <th>Nomor Transaksi</th>
-                                    <th>Quantity</th>
-                                    <th>Kode Master Barang</th>
-                                    <th>Kode Supplier</th>
-                                    <th>Status</th>
-                                    <th>Action</th>
+                                    <th>Nama Barang</th>
+                                    <th>Nilai</th>
+                                    <th>action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php foreach ($transaksi as $ts) : ?>
                                     <tr>
                                         <td width="150">
-                                            <?php echo $ts->id_transaksi ?>
+                                            <?php echo $ts->id_ts ?>
                                         </td>
                                         <td>
-                                            <?php echo date("d F Y ", strtotime($ts->date_create)); ?>
-
+                                            <?php echo $ts->nama_barang ?>
                                         </td>
                                         <td>
-                                            <?php echo $ts->tanggal_transaksi ?>
+                                            <?php echo $ts->nilai ?>
                                         </td>
-                                        <td>
-                                            <?php echo $ts->no_transaksi ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $ts->qty ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $ts->kode_mbarang ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $ts->kode_supplier ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $ts->status ?>
-                                        </td>
+                                       
+                                        
 
                                         <td>
-                                            <a href="<?php echo base_url('transaksi/edit/' . $ts->id_transaksi) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('transaksi/delete/' . $ts->id_transaksi) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                            <a href="<?php echo base_url('transaksi/edit/' . $ts->id_ts) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('transaksi/delete/' . $ts->id_ts) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

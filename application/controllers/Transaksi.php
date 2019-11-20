@@ -15,7 +15,7 @@ class Transaksi extends CI_Controller
 
     public function index()
     {
-        $data['title'] = 'transaksi';
+        $data['title'] = 'Transaksi';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
@@ -29,8 +29,6 @@ class Transaksi extends CI_Controller
 
     public function add()
     {
-        $this->load->model("Mbarang_model");
-        $this->load->model("Supplier_model");
         $transaksi = $this->transaksi_model;
         $validation = $this->form_validation;
         $validation->set_rules($transaksi->rules());
@@ -39,12 +37,10 @@ class Transaksi extends CI_Controller
             $transaksi->save();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
-        $data['title'] = 'Add transaksi';
+        $data['title'] = 'Add Transaksi';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $data["mbarang"] = $this->Mbarang_model->getAll();
-        $data["supplier"] = $this->Supplier_model->getAll();
         $data["transaksi"] = $this->transaksi_model->getAll();
         $this->load->view("_partials/header", $data);
         $this->load->view("_partials/topbar");
@@ -55,30 +51,26 @@ class Transaksi extends CI_Controller
 
     public function edit($id = null)
     {
-        if (!isset($id)) redirect('transaksi');
-        $this->load->model("Mbarang_model");
-        $this->load->model("Supplier_model");
+        if (!isset($id)) redirect('supplier');
 
-        $transaksi = $this->transaksi_model;
+        $supplier = $this->supplier_model;
         $validation = $this->form_validation;
-        $validation->set_rules($transaksi->rules());
+        $validation->set_rules($supplier->rules());
 
         if ($validation->run()) {
-            $transaksi->update();
+            $supplier->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
-        $data['title'] = 'Edit transaksi';
+        $data['title'] = 'Edit Supplier';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        // $data["mbarang"] = $this->mbarang_model->getAll();
-        // $data["supplier"] = $this->supplier_model->getAll();
-        $data["transaksi"] = $transaksi->getById($id);
-        if (!$data["transaksi"]) show_404();
+        $data["supplier"] = $supplier->getById($id);
+        if (!$data["supplier"]) show_404();
         $this->load->view("_partials/header", $data);
         $this->load->view("_partials/topbar");
         $this->load->view("_partials/sidebar", $data);
-        $this->load->view("transaksi/edit_form", $data);
+        $this->load->view("supplier/edit_form", $data);
         $this->load->view("_partials/footer");
     }
 
@@ -86,8 +78,8 @@ class Transaksi extends CI_Controller
     {
         if (!isset($id)) show_404();
 
-        if ($this->transaksi_model->delete($id)) {
-            redirect(site_url('transaksi'));
+        if ($this->supplier_model->delete($id)) {
+            redirect(site_url('supplier'));
         }
     }
 }
