@@ -45,7 +45,7 @@
                                             <?php echo $sp->kode_supplier ?>
                                         </td>
                                         <td>
-                                            <?php echo $sp->nama?>
+                                            <?php echo $sp->nama_supplier?>
                                         </td>
                                         <td>
                                             <?php echo $sp->alamat ?>

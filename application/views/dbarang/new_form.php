@@ -39,21 +39,30 @@ $hasil_10 = acakangka(1);
 
 ?>
 <div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row bg-title">
-            <div class="">
-                <a href="<?php echo site_url('dbarang') ?>"><i class="fa fa-arrow-left"></i> Back</a>
-            </div>
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        
+                    </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
+                            <li><a href="<?php echo site_url('dbarang') ?>">Data barang</a></li>
+                            <li class="active">Add Data Barang</a></li>
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
 
-
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="white-box">
-                    <div class="row">
-                        <div class="col-sm-12 col-xs-12">
+      <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><a href="<?php echo site_url('dbarang') ?>"><i class="fa fa-arrow-left"></i> Back </a> 
+                                <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
+                            </div>
+                            <div class="panel-wrapper collapse in">
+                                <div class="panel-body">
                             <?php if ($this->session->flashdata('success')) : ?>
                                 <div class="alert alert-success" role="alert">
+
                                     <?php echo $this->session->flashdata('success'); ?>
                                 </div>
                             <?php endif; ?>
