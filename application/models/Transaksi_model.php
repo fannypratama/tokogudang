@@ -52,7 +52,25 @@ class Transaksi_model extends CI_Model
     }
 
 
+    public function transaksi()
+    {
+        $post = $this->input->post();
+        $data['nama'] => $post['nama_barang'];
+        $data['nilai'] => $this->nilai => $post['nilai'];
+        $cheking = $this->db->get_where($this->_table, ["nama_barang"] => $data['nama'])->row();
 
+        if ($cheking) {
+            if ($this->uri->segmnet(2) == "masuk") {
+                $jumlah = $cheking + $data['nilai'];                
+                $this->db->update($this->_table, $data, ['nama_barang' => $data['nama']]);
+            }else if ($this->uri->segment(2) == "tarik") {
+                $jumlah = $cheking - $data['nilai'];                
+                $this->db->update($this->_table, $data, ['nama_barang' => $data['nama']]);
+            }
+        }else{
+            $this->db->insert($this->_table, $data);
+        }
+    }
 
     public function update()
     {
