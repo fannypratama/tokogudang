@@ -51,22 +51,30 @@ class Transaksi_model extends CI_Model
         $this->db->insert($this->_table, $this);
     }
 
-
+// function transaksi untuk melakukan transaksi pengambilan dan pemasukan barang
     public function transaksi()
     {
         $post = $this->input->post();
+        //variabel array untuk mengambil nilai dari inputan ui,
         $data['nama'] => $post['nama_barang'];
         $data['nilai'] => $this->nilai => $post['nilai'];
+        //------------------------------------//
+        // variabel chekign untuk mengabil data yang seusai dengan nama  
         $cheking = $this->db->get_where($this->_table, ["nama_barang"] => $data['nama'])->row();
-
+        // ngecek data dari tabel ts apakah ada apa tidak! kalau ada langsung eksekusi yang ada di dalam if! 
         if ($cheking) {
-            if ($this->uri->segmnet(2) == "masuk") {
-                $jumlah = $cheking + $data['nilai'];                
-                $this->db->update($this->_table, $data, ['nama_barang' => $data['nama']]);
+            // untuk memasukan barang yang sudah ada, dalam penjumlahan!
+            if ($this->uri->segment(2) == "masuk") {
+                $jumlah = $cheking + $data['nilai'];   
+                $nilai = $this->niali => $jumlah;                   
+                $this->db->update($this->_table, $jumlah, ['nama_barang' => $data['nama']]);
+            // untuk memasukan barang yang sudah ada, dalam pengurangan!
             }else if ($this->uri->segment(2) == "tarik") {
-                $jumlah = $cheking - $data['nilai'];                
-                $this->db->update($this->_table, $data, ['nama_barang' => $data['nama']]);
+                $jumlah = $cheking - $data['nilai'];
+                $nilai = $this->niali => $jumlah;              
+                $this->db->update($this->_table, $nilai, ['nama_barang' => $data['nama']]);
             }
+            // komdisi yang di dalam else di lakukan jika nama yang di cari tidak ada!
         }else{
             $this->db->insert($this->_table, $data);
         }
