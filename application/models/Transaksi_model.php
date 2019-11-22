@@ -39,19 +39,27 @@ class Transaksi_model extends CI_Model
     public function save()
     {
         $post = $this->input->post();
-        $this->nama_barang = $post['nama_barang'];
-        $transaksi = $this->db->get_where($this->_table, ['nama_barang' => $this->nama_barang])->result();
+         $data['nama_barang'] = $post['nama_barang'];
+        $data['nilai'] = $post['nilai'];
+        $transaksi = $this->db->get_where($this->_table, ['nama_barang' => $data['nama_barang']])->row_array();
         if ($transaksi == null) {
             $this->nilai = $post['nilai'];
             $this->nama_barang = $post['nama_barang'];
             $this->db->insert($this->_table, $this);
         } else {
-            var_dump($transaksi->nilai);
             // $angka = 
             // $transaksi->nilai +
             // $post['nilai'];
 
             // $this->db->update($this->_table, $langkah, array('nama_barang' => $post['nama_barang']));
+             var_dump($transaksi['nilai']);
+            $angka = 
+            $transaksi['nilai'] +
+            $post['nilai'];
+            $nilai = [
+                'nilai' => $angka
+            ];
+            $this->db->update($this->_table, $nilai, ['nama_barang' => $post['nama_barang']]);
         }
 
     }

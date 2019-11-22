@@ -41,7 +41,7 @@ class Transaksi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $data["transaksi"] = $this->transaksi_model->getAll();
+        $data["ts"] = $this->transaksi_model->getAll();
         $this->load->view("_partials/header", $data);
         $this->load->view("_partials/topbar");
         $this->load->view("_partials/sidebar", $data);
@@ -78,7 +78,7 @@ class Transaksi extends CI_Controller
     {
         if (!isset($id)) show_404();
 
-        if ($this->supplier_model->delete($id)) {
+       if ($this->transaksi_model->delete($id)) {
             redirect(site_url('ts'));
         }
     }
