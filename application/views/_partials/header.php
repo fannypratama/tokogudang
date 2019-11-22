@@ -25,6 +25,7 @@
     <link href="<?= base_url('assets/'); ?>css/animate.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="<?= base_url('assets/'); ?>css/style.css" rel="stylesheet">
+    <link rel="stylesheet" href="<?= base_url('assets/'); ?>plugins/bower_components/dropify/dist/css/dropify.min.css">
     <!-- color CSS -->
     <link href="<?= base_url('assets/'); ?>css/colors/default-dark.css" id="theme" rel="stylesheet">
     <!-- Page plugins css -->

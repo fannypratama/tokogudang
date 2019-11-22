@@ -23,8 +23,8 @@
                         <!-- /input-group -->
              </li>
              
-                    <li> <a href="administrator" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="m"></i> <span class="hide-menu"> DASHBOARD </span>  </a>
-
+                    <li> <!-- <a href="administrator" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="m"></i> <span class="hide-menu"> DASHBOARD </span>  </a>
+ -->
                     <li class="nav-small-cap m-t-10">- -Master Data</li>
                     <li> <a href="kategori" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="&#xe001;"></i> <span class="hide-menu"> Kategori </span>  </span></span></a>     
                     </li>
