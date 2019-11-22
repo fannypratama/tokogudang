@@ -51,7 +51,7 @@ class Transaksi extends CI_Controller
 
     public function edit($id = null)
     {
-        if (!isset($id)) redirect('ts');
+        if (!isset($id)) redirect('transaksi');
 
         $transaksi = $this->transaksi_model;
         $validation = $this->form_validation;
@@ -79,7 +79,7 @@ class Transaksi extends CI_Controller
         if (!isset($id)) show_404();
 
        if ($this->transaksi_model->delete($id)) {
-            redirect(site_url('ts'));
+            redirect(site_url('transaksi'));
         }
     }
 }

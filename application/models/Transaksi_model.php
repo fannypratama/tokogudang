@@ -72,7 +72,7 @@ class Transaksi_model extends CI_Model
         $this->id_ts = $post["id"];
         $this->nama_barang = $post["nama_barang"];
         $this->nilai = $post["nilai"];
-       
+             $this->db->update($this->_table, $this, array('id_ts' => $post['id']));
 
         // if (!empty($_FILES["image"]["name"])) {
         //     $this->image = $this->_uploadImage();
