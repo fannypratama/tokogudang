@@ -19,7 +19,7 @@ class Transaksi extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $data["transaksi"] = $this->transaksi_model->getAll();
+        $data["ts"] = $this->transaksi_model->getAll();
         $this->load->view('_partials/header.php', $data);
         $this->load->view('_partials/sidebar.php', $data);
         $this->load->view('_partials/topbar.php');
@@ -51,26 +51,26 @@ class Transaksi extends CI_Controller
 
     public function edit($id = null)
     {
-        if (!isset($id)) redirect('supplier');
+        if (!isset($id)) redirect('ts');
 
-        $supplier = $this->supplier_model;
+        $transaksi = $this->transaksi_model;
         $validation = $this->form_validation;
-        $validation->set_rules($supplier->rules());
+        $validation->set_rules($transaksi->rules());
 
         if ($validation->run()) {
-            $supplier->update();
+            $transaksi->update();
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
-        $data['title'] = 'Edit Supplier';
+        $data['title'] = 'Edit Transaksi';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-        $data["supplier"] = $supplier->getById($id);
-        if (!$data["supplier"]) show_404();
+        $data["ts"] = $transaksi->getById($id);
+        if (!$data["ts"]) show_404();
         $this->load->view("_partials/header", $data);
         $this->load->view("_partials/topbar");
         $this->load->view("_partials/sidebar", $data);
-        $this->load->view("supplier/edit_form", $data);
+        $this->load->view("transaksi/edit_form", $data);
         $this->load->view("_partials/footer");
     }
 
@@ -79,7 +79,7 @@ class Transaksi extends CI_Controller
         if (!isset($id)) show_404();
 
         if ($this->supplier_model->delete($id)) {
-            redirect(site_url('supplier'));
+            redirect(site_url('ts'));
         }
     }
 }

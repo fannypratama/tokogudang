@@ -24,7 +24,7 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($transaksi as $ts) : ?>
+                                <?php foreach ($ts as $ts) : ?>
                                     <tr>
                                         <td width="150">
                                             <?php echo $ts->id_ts ?>

@@ -2,7 +2,7 @@
     <div class="container-fluid">
         <div class="row bg-title">
             <div class="">
-                <a href="<?php echo site_url('supplier') ?>"><i class="fa fa-arrow-left"></i> Back</a>
+                <a href="<?php echo site_url('transaksi') ?>"><i class="fa fa-arrow-left"></i> Back</a>
             </div>
         </div>
         <div class="row">
@@ -18,40 +18,31 @@
                             <?php endif; ?>
 
 
-                            <form action="<?php base_url('supplier/edit') ?>" method="post" enctype="multipart/form-data">
+                            <form action="<?php base_url('transaksi/edit') ?>" method="post" enctype="multipart/form-data">
 
-                                <input type="hidden" name="id" value="<?php echo $supplier->id_supplier ?>" />
-                                <input type="hidden" name="kode_supplier" value="<?php echo $supplier->kode_supplier ?>" />
+                                <input type="hidden" name="id" value="<?php echo $ts->id_ts ?>" />
+                                <input type="hidden" name="nama_barang" value="<?php echo $ts->nama_barang ?>" />
                                 <div class="form-group">
-                                    <label for="nama">Nama supplier</label>
+                                    <label for="nama">Nama Barang</label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <input class="form-control <?php echo form_error('nama') ? 'is-invalid' : '' ?>" type="text" name="nama" placeholder="Nama supplier" value="<?php echo $supplier->nama ?>" />
+                                        <input class="form-control <?php echo form_error('nama_barang') ? 'is-invalid' : '' ?>" type="text" name="nama_barang" placeholder="Nama Barang" value="<?php echo $ts->nama_barang ?>" />
                                     </div>
                                     <div class="invalid-feedback">
                                         <?php echo form_error('nama') ?>
                                     </div>
                                 </div>
                                 <div class="form-group">
-                                    <label for="alamat">Alamat supplier</label>
+                                    <label for="nilai"></label>
                                     <div class="input-group">
                                         <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <input class="form-control <?php echo form_error('alamat') ? 'is-invalid' : '' ?>" type="text" name="alamat" placeholder="alamat supplier" value="<?php echo $supplier->alamat ?>" />
+                                        <input class="form-control <?php echo form_error('nilai') ? 'is-invalid' : '' ?>" type="text" name="nilai" placeholder="nilai" value="<?php echo $ts->nilai ?>" />
                                     </div>
                                     <div class="invalid-feedback">
-                                        <?php echo form_error('alamat') ?>
+                                        <?php echo form_error('nilai') ?>
                                     </div>
                                 </div>
-                                <div class="form-group">
-                                    <label for="kota">Kota supplier</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <input class="form-control <?php echo form_error('kota') ? 'is-invalid' : '' ?>" type="text" name="kota" placeholder="kota supplier" value="<?php echo $supplier->kota ?>" />
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <?php echo form_error('kota') ?>
-                                    </div>
-                                </div>
+                                
 
 
                                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="btn" value="Save">Submit</button>
