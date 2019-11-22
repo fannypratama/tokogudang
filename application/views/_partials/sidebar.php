@@ -35,7 +35,7 @@
             
              </li>
                     <li class="nav-small-cap m-t-10">- -Transaksi</li>
-                    <li> <a href="index.html" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="Z"></i> <span class="hide-menu"> Barang Masuk </span>  </span></span></a>     
+                    <li> <a href="transaksi" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="Z"></i> <span class="hide-menu"> Barang Masuk </span>  </span></span></a>     
                     </li>
                      <li> <a href="index.html" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="&"></i> <span class="hide-menu"> Barang Keluar </span>  </span></span></a>    
 
@@ -43,7 +43,7 @@
                     <li class="nav-small-cap m-t-10">- -Data</li>
                     <li> <a href="dbarang" class="waves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="A"></i> <span class="hide-menu"> Data Barang </span>  </span></span></a>     
                     </li>
-                     <li> <a href="transaksi" class="waves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="y"></i> <span class="hide-menu"> Transaksi Barang Masuk </span>  </span></span></a>     
+                     <li> <a href="index.html" class="waves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="y"></i> <span class="hide-menu"> Transaksi Barang Masuk </span>  </span></span></a>     
                     </li>
 
                      <li><a href="<?= base_url('auth') ?>" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log Out</span></a></li>
