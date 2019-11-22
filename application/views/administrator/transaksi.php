@@ -1,16 +1,27 @@
 <div id="page-wrapper">
-    <div class="container-fluid">
-        <!-- DataTables -->
-
-        <div class="row">
-            <div class="col-sm-12">
-                <div class="white-box">
-                    <h3 class="box-title m-b-0"><?= $title; ?></h3>
-
-                    <div class="card-header">
-                        <a href="<?php echo base_url('transaksi/add') ?>"><i class="fa fa-plus"></i> Add New</a>
-
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title"></h4>
                     </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
+
+                            <li class="active">transaksi</li>
+
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading"><?= $title; ?>
+                                <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
+                            </div>
+                            <div class="panel-wrapper collapse in">
+                                <div class="panel-body">
+                                  <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>transaksi/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add transaksi</a></div>
+                            <br><br><br>
 
                     <div class="table-responsive">
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
