@@ -26,36 +26,40 @@
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>ID Data Barang</th>
-                                    <th>Kode Master Barang</th>
-                                    <th>Kode Supplier</th>
-                                    <th>Nama Supplier</th>
-                                    <th>Nama Barang</th>
-                                    <th>Satuan</th>
-                                    <th>Uraian</th>
-                                    <th>Nama Kategori</th>
+                                     <th width="5">No</th>
+                                    <th width="10">ID Data Barang</th>
+                                    <!-- <th width="15">Kode Master Barang</th>
+                                    <th width="15">Kode Supplier</th> -->
+                                    <th width="15">Nama Supplier</th>
+                                    <th width="15">Nama Barang</th>
+                                    <th width="5">Satuan</th>
+                                    <th width="20">Uraian</th>
+                                    <th width="10">Nama Kategori</th>
 
 
-                                    <th>Stok</th>
-                                    <th>Status</th>
-                                    <th>Foto</th>
+                                    <th width="5">Stok</th>
+                                    <th width="5">Status</th>
+                                    <th width="15">Foto</th>
 
-                                    <th>Action</th>
+                                    <th width="10">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($dbarang as $databarang) : ?>
+                                <?php $no = 1;
+                                foreach ($dbarang as $databarang) : 
+                                    ?>
 
                                     <tr>
+                                         <td><?php echo $no++; ?></td>
                                         <td width="150">
                                             <?php echo $databarang->id_dbarang ?>
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <?php echo $databarang->kode_mbarang ?>
                                         </td>
                                         <td>
                                             <?php echo $databarang->kode_supplier ?>
-                                        </td>
+                                        </td> -->
 
                                         <td>
                                             <?php echo $databarang->nama_supplier ?>

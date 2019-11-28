@@ -20,12 +20,13 @@
                             </div>
                             <div class="panel-wrapper collapse in">
                                 <div class="panel-body">        <!-- DataTables -->
-                     <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>administrator/addmb" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add image</a></div>
+                     <div class="btn-group pull-right"><a href="<?php echo base_url('mbarang/add') ?>" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add image</a></div>
                             <br><br><br>
                     <div class="table-responsive">
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                     <th width="15">No</th>
                                     <th>ID Master Barang</th>
                                     <th>Kode Master Barang</th>
                                     <th>Nama Barang</th>
@@ -37,8 +38,11 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($mbarang as $masterbarang) : ?>
+                                <?php $no = 1;
+                                foreach ($mbarang as $masterbarang) : 
+                                    ?>
                                     <tr>
+                                         <td><?php echo $no++; ?></td>
                                         <td width="150">
                                             <?php echo $masterbarang->id_mbarang ?>
                                         </td>
@@ -66,8 +70,8 @@
 
 
                                         <td>
-                                            <a href="<?php echo base_url('mbarang/edit/' . $masterbarang->id_mbarang) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('mbrang/delete/' . $masterbarang->id_mbarang) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                             <a href="<?php echo base_url('mbarang/edit/' . $masterbarang->id_mbarang) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('mbarang/delete/' . $masterbarang->id_mbarang) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

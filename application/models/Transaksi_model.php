@@ -2,24 +2,33 @@
 
 class Transaksi_model extends CI_Model
 {
-    private $_table = "ts";
+    private $_table = "transaksi";
 
-    public $id_ts;
-    public $nama_barang;
-    public $nilai;
-   
-
-
+    public $id_transaksi;
+    public $date_create;
+    public $tanggal_transaksi;
+    public $no_transaksi;
+    public $qty;
+    public $kode_mbarang;
+    public $kode_supplier;
+    public $status;
 
 
     public function rules()
     {
         return [
             [
-                'field' => 'nilai',
-                'label' => 'Nilai',
+                'field' => 'qty',
+                'label' => 'qty',
                 'rules' => 'required'
             ]
+            // [
+            //     'kode_mbarang',
+            //     'Kode Mbarang',
+            //     'required|trim|is_unique[transaksi.kode_mbarang]',
+
+            // ]
+
 
         ];
     }
@@ -31,20 +40,54 @@ class Transaksi_model extends CI_Model
 
     public function getById($id)
     {
-        return $this->db->get_where($this->_table, ["id_ts" => $id])->row();
+        return $this->db->get_where($this->_table, ["id_transaksi" => $id])->row();
     }
-
 
 
     public function save()
     {
+
+
         $post = $this->input->post();
-         $data['nama_barang'] = $post['nama_barang'];
-        $data['nilai'] = $post['nilai'];
-        $transaksi = $this->db->get_where($this->_table, ['nama_barang' => $data['nama_barang']])->row_array();
+        $this->date_create = date("Y-m-d H:i:s");
+        $this->tanggal_transaksi = $post['tanggal_transaksi'];
+        $this->no_transaksi = $post["no_transaksi"];
+        $this->qty = $post["qty"];
+        $this->kode_mbarang = $post["kode_mbarang"];
+        $this->kode_supplier = $post["kode_supplier"];
+        $this->status = $post["status"];
+        $this->db->insert($this->_table, $this);
+    }
+
+
+    public function update()
+    {
+
+        $post = $this->input->post();
+        $this->id_transaksi = $post["id"];
+        $this->date_create = $post["date_create"];
+        $this->tanggal_transaksi = $post["tanggal_transaksi"];
+        $this->no_transaksi = $post["no_transaksi"];
+        $this->qty = $post["qty"];
+        $this->kode_mbarang = $post["kode_mbarang"];
+        $this->kode_supplier = $post["kode_supplier"];
+        $this->status = $post["status"];
+
+
+
+        $this->db->update($this->_table, $this, array('id_transaksi' => $post['id']));
+    }
+
+    public function updateminus()
+    {
+
+        $post = $this->input->post();
+        $data['kode_mbarang'] = $post['kode_mbarang'];
+        $data['qty'] = $post['qty'];
+        $transaksi = $this->db->get_where($this->_table, ['kode_mbarang' => $data['kode_mbarang']])->row_array();
         if ($transaksi == null) {
-            $this->nilai = $post['nilai'];
-            $this->nama_barang = $post['nama_barang'];
+            $this->qty = $post['qty'];
+            $this->kode_mbarang = $post['kode_mbarang'];
             $this->db->insert($this->_table, $this);
         } else {
             // $angka = 
@@ -52,60 +95,80 @@ class Transaksi_model extends CI_Model
             // $post['nilai'];
 
             // $this->db->update($this->_table, $langkah, array('nama_barang' => $post['nama_barang']));
-             var_dump($transaksi['nilai']);
-            $angka = 
-            $transaksi['nilai'] +
-            $post['nilai'];
-            $nilai = [
-                'nilai' => $angka
+            var_dump($transaksi['qty']);
+            $angka =
+                $transaksi['qty'] -
+                $post['qty'];
+            $qty = [
+                'qty' => $angka
             ];
-            $this->db->update($this->_table, $nilai, ['nama_barang' => $post['nama_barang']]);
+            $this->db->update($this->_table, $qty, ['kode_mbarang' => $post['kode_mbarang']]);
         }
-
     }
-
-
-
-    public function update()
+    public function updateplus()
     {
+
         $post = $this->input->post();
-        $this->id_ts = $post["id"];
-        $this->nama_barang = $post["nama_barang"];
-        $this->nilai = $post["nilai"];
-             $this->db->update($this->_table, $this, array('id_ts' => $post['id']));
+        $data['kode_mbarang'] = $post['kode_mbarang'];
+        $data['qty'] = $post['qty'];
+        $transaksi = $this->db->get_where($this->_table, ['kode_mbarang' => $data['kode_mbarang']])->row_array();
+        if ($transaksi == null) {
+            $this->qty = $post['qty'];
+            $this->kode_mbarang = $post['kode_mbarang'];
+            $this->db->insert($this->_table, $this);
+        } else {
+            // $angka = 
+            // $transaksi->nilai +
+            // $post['nilai'];
 
-        // if (!empty($_FILES["image"]["name"])) {
-        //     $this->image = $this->_uploadImage();
-        // } else {
-        //     $this->image = $post["old_image"];
-        // }
-
-        // $this->db->update($this->_table, $this, array('id_ts' => $post['id']));
+            // $this->db->update($this->_table, $langkah, array('nama_barang' => $post['nama_barang']));
+            var_dump($transaksi['qty']);
+            $angka =
+                $transaksi['qty'] +
+                $post['qty'];
+            $qty = [
+                'qty' => $angka
+            ];
+            $this->db->update($this->_table, $qty, ['kode_mbarang' => $post['kode_mbarang']]);
+        }
     }
+    // $jumlah_barang_asli = $this->input->post('jumlah_barang_asli');
+    // $keluar = $this->input->post('keluar');
+    // $this->qty = $jumlah_barang_asli - $keluar;
+    // $post = $this->input->post();
+
+    // $this->id_transaksi = $post["id"];
+    // $this->date_create = $post["date_create"];
+    // $this->tanggal_transaksi = $post["tanggal_transaksi"];
+    // $this->no_transaksi = $post["no_transaksi"];
+
+    // $this->kode_mbarang = $post["kode_mbarang"];
+    // $this->kode_supplier = $post["kode_supplier"];
+    // $this->status = $post["status"];
+    // $data["transaksi"] = $transaksi->getById($id);
+    // var_dump($data['qty']);
+    // $angka = $transaksi['qty'] - $post['qty'];
+    // $qty = [
+    //     'qty' => $angka
+    // ];
+    // $this->db->update($this->_table, $qty, $this, array('id_transaksi' => $post['id']));
+
+    // public function tambahnilai()
+    // {
+    //     $post = $this->input->post();
+    //     $this->date_create = time();
+    //     $this->tanggal_transaksi = $post['tanggal_transaksi'];
+    //     $this->no_transaksi = $post["no_transaksi"];
+    //     $this->qty = $post["qty"];
+    //     $this->kode_mbarang = $post["kode_mbarang"];
+    //     $this->kode_supplier = $post["kode_supplier"];
+    //     $this->status = $post["status"];
+
+    //     $this->db->tambahnilai($this->_table, $this, array('id_transaksi' => $post['id']));
+    // }
 
     public function delete($id)
     {
-        return $this->db->delete($this->_table, array("id_ts" => $id));
+        return $this->db->delete($this->_table, array("id_transaksi" => $id));
     }
-
-    // private function _uploadImage()
-    // {
-
-    //     $config['upload_path']          = './upload/ts';
-    //     $config['allowed_types']        = 'jpg|png|gif';
-    //     $config['file_name']            = $this->id_ts;
-    //     $config['overwrite']            = true;
-    //     $config['max_size']             = 10240; // 1MB
-    //     // $config['max_width']            = 1024;
-    //     // $config['max_height']           = 768;
-
-    //     $this->load->library('upload', $config);
-    //     $this->upload->initialize($config);
-    //     if ($this->upload->do_upload('foto')) {
-    //         return $this->upload->data("file_name");
-    //     }
-    //     print_r($this->upload->display_errors());
-
-    //     return "default.jpg";
-    // }
 }

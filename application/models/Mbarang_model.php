@@ -77,17 +77,25 @@ class Mbarang_model extends CI_Model
         $this->uraian = $post["uraian"];
         $this->nama_kategori = $post["nama_kategori"];
 
-        // if (!empty($_FILES["foto"]["name"])) {
-        //     $this->foto = $this->_uploadImage();
-        // } else {
-        //     $this->foto = $post["old_foto"];
-        // }
+        if (!empty($_FILES["foto"]["name"])) {
+            $this->foto = $this->_uploadImage();
+        } else {
+            $this->foto = $post["old_foto"];
+        }
 
         $this->db->update($this->_table, $this, array('id_mbarang' => $post['id']));
     }
 
+    public function update_barang_keluar()
+    {
+        $this->qty = $post["qty"];
+
+        $this->db->update($this->_table, $this, array('qty' => $post['qty']));
+    }
+
     public function delete($id)
     {
+        $this->_deleteImage($id);
         return $this->db->delete($this->_table, array("id_mbarang" => $id));
     }
 
@@ -110,5 +118,14 @@ class Mbarang_model extends CI_Model
         print_r($this->upload->display_errors());
 
         return "default.jpg";
+    }
+
+    private function _deleteImage($id)
+    {
+        $masterbarang = $this->getById($id);
+        if ($masterbarang->foto != "default.jpg") {
+            $filename = explode(".", $masterbarang->foto)[0];
+            return array_map('unlink', glob(FCPATH . "./upload/product/$filename.*"));
+        }
     }
 }

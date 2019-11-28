@@ -83,13 +83,14 @@ class Mbarang extends CI_Controller
         $this->session->userdata('email')])->row_array();
 
         //$data["kategori"] = $this->Kategori_model->getAll();
-        $data['kat']     = $this->db->get('kategori')->result_array();
-        $kategori = $this->db->get('kategori')->result_array();
+        // $data['kat']     = $this->db->get('kategori')->result_array();
+        // $kategori = $this->db->get('kategori')->result_array();
         // echo "<pre>";
         // print_r($kategori);
         // echo "</pre>";
-        echo json_encode($kategori);
-        exit();
+        // echo json_encode($kategori);
+        // exit();
+        $data["kategori"] = $this->Kategori_model->getAll();
         $data["mbarang"] = $mbarang->getById($id);
         if (!$data["mbarang"]) show_404();
         $this->load->view("_partials/header", $data);
@@ -108,18 +109,18 @@ class Mbarang extends CI_Controller
         }
     }
 
-    public function update_data()
-    {
-        $update = array(
-            'id_mbarang'    => $this->input->post('id'),
-            'nama'          => $this->input->post('nama'),
-            'satuan'        => $this->input->post('satuan'),
-            'uraian'        => $this->input->post('uraian')
-        );
+    // public function update_data()
+    // {
+    //     $update = array(
+    //         'id_mbarang'    => $this->input->post('id'),
+    //         'nama'          => $this->input->post('nama'),
+    //         'satuan'        => $this->input->post('satuan'),
+    //         'uraian'        => $this->input->post('uraian')
+    //     );
 
-        echo "update";
-        exit();
-    }
+    //     echo "update";
+    //     exit();
+    // }
 
     public function do_upload()
     {

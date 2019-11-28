@@ -27,6 +27,7 @@
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
+                                     <th width="15">No</th>
                                     <th>ID Supplier</th>
                                     <th>Kode_supplier</th>
                                     <th>Nama Supplier</th>
@@ -36,8 +37,10 @@
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($supplier as $sp) : ?>
+                                <?php $no = 1; 
+                                foreach ($supplier as $sp) : ?>
                                     <tr>
+                                         <td><?php echo $no++; ?></td>
                                         <td width="150">
                                             <?php echo $sp->id_supplier ?>
                                         </td>

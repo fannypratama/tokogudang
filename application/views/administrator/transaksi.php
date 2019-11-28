@@ -13,45 +13,78 @@
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-    <div class="col-sm-12">
+        <!-- DataTables -->
+
+       <div class="col-sm-12">
                         <div class="panel panel-default">
                             <div class="panel-heading"><?= $title; ?>
                                 <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
                             </div>
-                            <div class="panel-wrapper collapse in">
+                   <div class="panel-wrapper collapse in">
                                 <div class="panel-body">
-                                  <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>transaksi/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add transaksi</a></div>
+                         <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>transaksi/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add transaksi</a></div>
                             <br><br><br>
+                        <!-- <a href="<?php echo base_url('transaksi/editplus/') ?>" class="btn btn-small "><i class="fa fa-arrow-left"></i> Barang Masuk</a>
+                        <a href="<?php echo base_url('transaksi/editminus/') ?>" class="btn btn-small text-danger"><i class="fa fa-arrow-right"></i> Barang Keluar</a>
+ -->
 
                     <div class="table-responsive">
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th>ID Transaksi</th>
-                                    <th>Nama Barang</th>
-                                    <th>Nilai</th>
-                                    <th>action</th>
-                                    
+                                    <th width="5">No</th>
+                                    <th width="5">ID Transaksi</th>
+                                    <th width="15">Date Create</th>
+                                    <th width="15">Tanggal Transaksi</th>
+                                    <th width="15">Nomor Transaksi</th>
+                                    <th width="5">Quantity</th>
+                                    <!-- <th>Kode Master Barang</th>
+                                     --><th width="15"> Master Barang</th>
+                                    <!-- <th>Kode Supplier</th> -->
+                                    <th width="15">Nama Supplier</th>
+                                    <th width="5">Status</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php foreach ($ts as $ts) : ?>
+                                <?php $no = 1; 
+                                foreach ($transaksi as $ts) : 
+                                    ?>
                                     <tr>
+                                         <td><?php echo $no++; ?></td>
                                         <td width="150">
-                                            <?php echo $ts->id_ts ?>
+                                            <?php echo $ts->id_transaksi ?>
                                         </td>
                                         <td>
-                                            <?php echo $ts->nama_barang ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $ts->nilai ?>
-                                        </td>
-                                       
-                                        
+                                            <?php echo date("d F Y ", strtotime($ts->date_create)); ?>
 
+                                        </td>
                                         <td>
-                                            <a href="<?php echo base_url('transaksi/edit/' . $ts->id_ts) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('transaksi/delete/' . $ts->id_ts) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                            <?php echo $ts->tanggal_transaksi ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $ts->no_transaksi ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $ts->qty ?>
+                                        </td>
+                                        <!-- <td>
+                                            <?php echo $ts->kode_mbarang ?>
+                                        </td> -->
+                                        <td>
+                                            <?php echo
+                                                    $this->db->get_where('mbarang', array('kode_mbarang' => $ts->kode_mbarang))->row()->nama;
+                                                ?>
+                                        </td>
+                                        <!-- <td>
+                                            <?php echo $ts->kode_supplier ?>
+                                        </td> -->
+                                        <td>
+                                            <?php echo
+                                                    $this->db->get_where('supplier', array('kode_supplier' => $ts->kode_supplier))->row()->nama_supplier;
+                                                ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $ts->status ?>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>

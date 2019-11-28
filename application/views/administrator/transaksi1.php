@@ -7,7 +7,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
 
-                            <li class="active">Kategori</li>
+                            <li class="active">transaksi</li>
 
                         </ol>
                     </div>
@@ -20,40 +20,41 @@
                             </div>
                             <div class="panel-wrapper collapse in">
                                 <div class="panel-body">
-                   
-                                          <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>kategori/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add kategori</a></div>
+                                  <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>transaksi/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add transaksi</a></div>
                             <br><br><br>
 
                     <div class="table-responsive">
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th width="15">No</th>
-                                    <th>ID Kategori</th>
-                                    <th>Kode_kategori</th>
-                                    <th>Nama Kategori</th>
-                                    <th>Action</th>
+                                     <th width="15">No</th>
+                                    <th>ID Transaksi</th>
+                                    <th>Nama Barang</th>
+                                    <th>Nilai</th>
+                                    <th>action</th>
+                                    
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1;
-                                 foreach ($kategori as $kg) : 
-                                    ?>
+                                <?php $no = 1; 
+                                 foreach ($ts as $ts) : ?>
                                     <tr>
                                          <td><?php echo $no++; ?></td>
                                         <td width="150">
-                                            <?php echo $kg->id_kategori ?>
+                                            <?php echo $ts->id_ts ?>
                                         </td>
                                         <td>
-                                            <?php echo $kg->kode_kategori ?>
+                                            <?php echo $ts->nama_barang ?>
                                         </td>
                                         <td>
-                                            <?php echo $kg->nama_kategori ?>
+                                            <?php echo $ts->nilai ?>
                                         </td>
+                                       
+                                        
 
                                         <td>
-                                            <a href="<?php echo base_url('kategori/edit/' . $kg->id_kategori) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('kategori/delete/' . $kg->id_kategori) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                            <a href="<?php echo base_url('transaksi/edit/' . $ts->id_ts) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('transaksi/delete/' . $ts->id_ts) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
                                         </td>
                                     </tr>
                                 <?php endforeach; ?>
