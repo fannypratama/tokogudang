@@ -1,69 +1,61 @@
 <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row bg-title">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title"></h4>
-                    </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <ol class="breadcrumb">
+    <div class="container-fluid">
+        <!-- DataTables -->
 
-                            <li class="active">Data Barang</li>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0"><?= $title; ?></h3>
 
-                        </ol>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
-    <div class="col-sm-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading"><?= $title; ?>
-                                <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
-                            </div>
-                            <div class="panel-wrapper collapse in">
-                                <div class="panel-body">
-                   
-                                          <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>dbarang/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add Barang</a></div>
-                            <br><br><br>                    <div class="table-responsive">
+                    <!-- <div class="card-header">
+                        <a  href="<?php echo base_url('dbarang/add') ?>"><i class="fa fa-plus"></i> Add New</a>
+
+                    </div> -->
+
+                    <div class="table-responsive">
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                     <th width="5">No</th>
-                                    <th width="10">ID Data Barang</th>
-                                    <!-- <th width="15">Kode Master Barang</th>
-                                    <th width="15">Kode Supplier</th> -->
-                                    <th width="15">Nama Supplier</th>
-                                    <th width="15">Nama Barang</th>
-                                    <th width="5">Satuan</th>
-                                    <th width="20">Uraian</th>
-                                    <th width="10">Nama Kategori</th>
+                                    <th>ID Data Barang</th>
+                                    <th>Nama Barang</th>
+                                    <th>Nama Supplier</th>
+
+                                    <th>Nama Barang</th>
+                                    <th>Satuan</th>
+                                    <th>Uraian</th>
+                                    <!-- <th>Nama Kategori</th> -->
 
 
-                                    <th width="5">Stok</th>
-                                    <th width="5">Status</th>
-                                    <th width="15">Foto</th>
+                                    <th>Stok</th>
+                                    <th>Status</th>
+                                    <th>Foto</th>
 
-                                    <th width="10">Action</th>
+                                    <!-- <th>Action</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1;
-                                foreach ($dbarang as $databarang) : 
-                                    ?>
+                                <?php foreach ($dbarang as $databarang) :
+                                    $this->db->select_sum('qty');
+                                    $query = $this->db->get_where('transaksi', array('kode_mbarang' => $databarang->kode_mbarang))->row()->qty; ?>
 
                                     <tr>
-                                         <td><?php echo $no++; ?></td>
                                         <td width="150">
                                             <?php echo $databarang->id_dbarang ?>
                                         </td>
-                                        <!-- <td>
-                                            <?php echo $databarang->kode_mbarang ?>
-                                        </td>
                                         <td>
-                                            <?php echo $databarang->kode_supplier ?>
-                                        </td> -->
 
-                                        <td>
-                                            <?php echo $databarang->nama_supplier ?>
+                                            <?php echo
+                                                    $this->db->get_where('mbarang', array('kode_mbarang' => $databarang->kode_mbarang))->row()->nama;
+                                                ?>
                                         </td>
+                                        <td>
+
+                                            <?php echo
+                                                    $this->db->get_where('supplier', array('kode_supplier' => $databarang->kode_supplier))->row()->nama_supplier;
+                                                ?>
+                                        </td>
+
+
                                         <td>
                                             <?php echo $databarang->nama ?>
                                         </td>
@@ -73,11 +65,9 @@
                                         <td>
                                             <?php echo $databarang->uraian ?>
                                         </td>
+
                                         <td>
-                                            <?php echo $databarang->nama_kategori ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $databarang->stok ?>
+                                            <?php echo $query; ?>
                                         </td>
                                         <td>
                                             <?php echo $databarang->status ?>
@@ -89,10 +79,10 @@
                                         </td>
 
 
-                                        <td>
-                                            <a href="<?php echo base_url('dbarang/edit/' . $databarang->id_dbarang) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('dbarang/delete/' . $databarang->id_dbarang) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
-                                        </td>
+                                        <!-- <td> -->
+                                        <!-- <a href="<?php echo base_url('dbarang/edit/' . $databarang->id_dbarang) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('dbarang/delete/' . $databarang->id_dbarang) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a> -->
+                                        </!-->
                                     </tr>
                                 <?php endforeach; ?>
 

@@ -4,6 +4,7 @@ class Transaksi_model extends CI_Model
 {
     private $_table = "transaksi";
 
+
     public $id_transaksi;
     public $date_create;
     public $tanggal_transaksi;
@@ -43,6 +44,14 @@ class Transaksi_model extends CI_Model
         return $this->db->get_where($this->_table, ["id_transaksi" => $id])->row();
     }
 
+    public function getJumlah()
+    {
+        $query = "SELECT sum (if(kode_mbarang = kode_mbarang, qty, NULL)) as qty FROM transaksi";
+
+
+        return  $this->db->query($query)->result_array();
+    }
+
 
     public function save()
     {
@@ -73,7 +82,8 @@ class Transaksi_model extends CI_Model
         $this->kode_supplier = $post["kode_supplier"];
         $this->status = $post["status"];
 
-
+        // $data = array(
+        //     'stok' => $this->qty, );
 
         $this->db->update($this->_table, $this, array('id_transaksi' => $post['id']));
     }

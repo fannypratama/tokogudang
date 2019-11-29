@@ -1,63 +1,46 @@
 <div id="page-wrapper">
-            <div class="container-fluid">
-                <div class="row bg-title">
-                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
-                        <h4 class="page-title"></h4>
-                    </div>
-                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
-                        <ol class="breadcrumb">
-
-                            <li class="active">transaksi</li>
-
-                        </ol>
-                    </div>
-                    <!-- /.col-lg-12 -->
-                </div>
+    <div class="container-fluid">
         <!-- DataTables -->
 
-       <div class="col-sm-12">
-                        <div class="panel panel-default">
-                            <div class="panel-heading"><?= $title; ?>
-                                <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
-                            </div>
-                   <div class="panel-wrapper collapse in">
-                                <div class="panel-body">
-                         <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>transaksi/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add transaksi</a></div>
-                            <br><br><br>
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="white-box">
+                    <h3 class="box-title m-b-0"><?= $title; ?></h3>
+
+                    <div class="card-header">
+                        <a href="<?php echo base_url('transaksi/add') ?>"><i class="fa fa-plus"></i> Add New</a>
                         <!-- <a href="<?php echo base_url('transaksi/editplus/') ?>" class="btn btn-small "><i class="fa fa-arrow-left"></i> Barang Masuk</a>
-                        <a href="<?php echo base_url('transaksi/editminus/') ?>" class="btn btn-small text-danger"><i class="fa fa-arrow-right"></i> Barang Keluar</a>
- -->
+                        <a href="<?php echo base_url('transaksi/editminus/') ?>" class="btn btn-small text-danger"><i class="fa fa-arrow-right"></i> Barang Keluar</a> -->
+
+                    </div>
 
                     <div class="table-responsive">
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                    <th width="5">No</th>
-                                    <th width="5">ID Transaksi</th>
-                                    <th width="15">Date Create</th>
-                                    <th width="15">Tanggal Transaksi</th>
-                                    <th width="15">Nomor Transaksi</th>
-                                    <th width="5">Quantity</th>
-                                    <!-- <th>Kode Master Barang</th>
-                                     --><th width="15"> Master Barang</th>
+                                    <th>ID Transaksi</th>
+                                    <!-- <th>Date Create</th> -->
+                                    <th>Tanggal Transaksi</th>
+                                    <th>Nomor Transaksi</th>
+                                    <th>Quantity</th>
+                                    <!-- <th>Kode Master Barang</th> -->
+                                    <th> Nama Barang</th>
                                     <!-- <th>Kode Supplier</th> -->
-                                    <th width="15">Nama Supplier</th>
-                                    <th width="5">Status</th>
+                                    <th>Nama Supplier</th>
+                                    <th>Status</th>
+                                    <!-- <th>Action</th> -->
                                 </tr>
                             </thead>
                             <tbody>
-                                <?php $no = 1; 
-                                foreach ($transaksi as $ts) : 
-                                    ?>
+                                <?php foreach ($transaksi as $ts) : ?>
                                     <tr>
-                                         <td><?php echo $no++; ?></td>
                                         <td width="150">
                                             <?php echo $ts->id_transaksi ?>
                                         </td>
-                                        <td>
+                                        <!-- <td>
                                             <?php echo date("d F Y ", strtotime($ts->date_create)); ?>
 
-                                        </td>
+                                        </td> -->
                                         <td>
                                             <?php echo $ts->tanggal_transaksi ?>
                                         </td>
@@ -75,6 +58,7 @@
                                                     $this->db->get_where('mbarang', array('kode_mbarang' => $ts->kode_mbarang))->row()->nama;
                                                 ?>
                                         </td>
+
                                         <!-- <td>
                                             <?php echo $ts->kode_supplier ?>
                                         </td> -->
@@ -86,6 +70,12 @@
                                         <td>
                                             <?php echo $ts->status ?>
                                         </td>
+
+                                        <!-- <td>
+                                            <a href="<?php echo base_url('transaksi/edit/' . $ts->id_transaksi) ?>" class="btn btn-small "><i class="fa fa-edit"></i> Edit</a>
+
+                                            <a onclick="deleteConfirm('<?php echo site_url('transaksi/delete/' . $ts->id_transaksi) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                        </td> -->
                                     </tr>
                                 <?php endforeach; ?>
 
