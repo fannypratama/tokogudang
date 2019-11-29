@@ -7,7 +7,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
 
-                            <li class="active">transaksi</li>
+                            <li class="active">Transaksi</li>
 
                         </ol>
                     </div>
@@ -19,9 +19,9 @@
                                 <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
                             </div>
                             <div class="panel-wrapper collapse in">
-                                <div class="panel-body">
-                                  <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>transaksi/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add transaksi</a></div>
-                            <br><br><br>
+                                <div class="panel-body">                   
+                                          <!-- <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>transaksi/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add kategori</a></div> -->
+                            <br><br>
 
                     <div class="table-responsive">
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">

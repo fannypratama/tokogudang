@@ -40,6 +40,7 @@
                     </li>
                      <li> <a href="<?= base_url(); ?>/transaksi_keluar" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="&"></i> <span class="hide-menu"> Barang Keluar </span>  </span></span></a>    
 
+                     <li> <a href="refound" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="&"></i> <span class="hide-menu"> Barang Refound </span>  </span></span></a>
              </li>
                     <li class="nav-small-cap m-t-10">- -Data</li>
                     <li> <a href="<?= base_url(); ?>/dbarang" class="w68aves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="A"></i> <span class="hide-menu"> Data Barang </span>  </span></span></a>     

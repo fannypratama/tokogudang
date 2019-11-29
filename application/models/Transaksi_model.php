@@ -61,8 +61,6 @@ class Transaksi_model extends CI_Model
 
     public function save()
     {
-
-
         $post = $this->input->post();
         $this->date_create = date("Y-m-d H:i:s");
         $this->tanggal_transaksi = $post['tanggal_transaksi'];
@@ -72,6 +70,40 @@ class Transaksi_model extends CI_Model
         $this->kode_supplier = $post["kode_supplier"];
         $this->status = $post["status"];
         $this->db->insert($this->_table, $this);
+
+        $kode_mbarang = $post["kode_mbarang"];
+        $qty = $this->db->get_where('dbarang', ["kode_mbarang" => $kode_mbarang])->row()->stok;
+        if ($post["status"] === "masuk") {
+
+            $stok = $qty + $post['qty'];
+
+            $data = [
+                'stok' => $stok
+            ];
+
+            $this->db->update('dbarang', $data, ['kode_mbarang' => $kode_mbarang]);
+        } elseif ($post["status"] === "keluar") {
+            
+            $stok = $qty - $post['qty'];
+
+            $data = [
+                'stok' => $stok
+            ];
+
+            $this->db->update('dbarang', $data, ['kode_mbarang' => $kode_mbarang]);
+        }
+         elseif ($post["status"] === "refund") {
+            $refund = $this->db->get_where($this->_table, ["no_transaksi" => $post['no_transaksi']])->row()->qty;
+            $stok = $qty - $refund;
+
+            $nilai = $stok + $post['qty'];
+
+            $data = [
+                'stok' => $nilai
+            ];
+
+            $this->db->update('dbarang', $data, ['kode_mbarang' => $kode_mbarang]);
+        }
     }
 
 
