@@ -126,6 +126,7 @@ $hasil_10 = acakangka(1);
 
                                 <div class="form-group row">
                                     <label class="col-sm-3 control-label col-form-label">Status</label>
+
                                     <div class="col-sm-7">
                                             <input class="form-control <?php echo form_error('status') ? 'is-invalid' : '' ?>" type="text" name="status" placeholder="Status" />
                                     </div>

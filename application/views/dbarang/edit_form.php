@@ -1,46 +1,112 @@
 <div id="page-wrapper">
-    <div class="container-fluid">
-        <div class="row bg-title">
-            <div class="">
-                <a href="<?php echo site_url('kategori') ?>"><i class="fa fa-arrow-left"></i> Back</a>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-md-6">
-                <div class="white-box">
-                    <div class="row">
-                        <div class="col-sm-12 col-xs-12">
+            <div class="container-fluid">
+                <div class="row bg-title">
+                    <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
+                        <h4 class="page-title"></h4>
+                    </div>
+                    <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
+                        <ol class="breadcrumb">
 
-                            <?php if ($this->session->flashdata('success')) : ?>
-                                <div class="alert alert-success" role="alert">
-                                    <?php echo $this->session->flashdata('success'); ?>
-                                </div>
-                            <?php endif; ?>
+                            <li class="active">Detail</li>
 
+                        </ol>
+                    </div>
+                    <!-- /.col-lg-12 -->
+                </div>
+    <div class="col-sm-12">
+                        <div class="panel panel-default">
+                            <div class="panel-heading">Detail
+                                <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
+                            </div>
+                            <div class="panel-wrapper collapse in">
+                                <div class="panel-body">
+                                    <br>
+                    <div class="table-responsive">
+                        <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>ID Data Barang</th>
+                                    <th>Nama Barang</th>
+                                    <th>Nama Supplier</th>
 
-                            <form action="<?php base_url('kategori/edit') ?>" method="post" enctype="multipart/form-data">
-
-                                <input type="hidden" name="id" value="<?php echo $kategori->id_kategori ?>" />
-                                <input type="hidden" name="kode_kategori" value="<?php echo $kategori->kode_kategori ?>" />
-                                <div class="form-group">
-                                    <label for="nama_kategori">Nama Kategori*</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <input class="form-control <?php echo form_error('nama_kategori') ? 'is-invalid' : '' ?>" type="text" name="nama_kategori" placeholder="Nama Kategori" value="<?php echo $kategori->nama_kategori ?>" />
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <?php echo form_error('nama_kategori') ?>
-                                    </div>
-                                </div>
-
-
-                                <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="btn" value="Save">Submit</button>
-                                <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
-                            </form>
-
-                        </div>
+                                    <th>Nama Barang</th>
+                                    <th>Satuan</th>
+                                    <th>Uraian</th>
+                                    <!-- <th>Nama Kategori</th> -->
 
 
+                                    <th>Stok</th>
+                                    <th>Status</th>
+                                    <th>Foto</th>
+
+                                    <!-- <th>Action</th> -->
+                                </tr>
+                            </thead>
+                            <tbody>
+<!--                                 <?php
+                                     $this->db->select_sum('qty');
+                                    $query = $this->db->get_where('transaksi', array('kode_mbarang' => $dbarang->kode_mbarang))->row()->qty; 
+                                    ?> -->
+
+                                    <tr>
+                                        <td width="150">
+                                            <?php echo $transaksi->id_transaksi ?>
+                                        </td>
+                                        <td>
+
+                                            <?php echo
+                                                    $this->db->get_where('mbarang
+                                                        ', array('kode_mbarang' => $transaksi->kode_mbarang))->row()->nama;
+                                                ?>
+                                        </td>
+                                        <td>
+
+                                            <?php echo
+                                                    $this->db->get_where('supplier', array('kode_supplier' => $transaksi->kode_supplier))->row()->nama_supplier;
+                                                ?>
+                                        </td>
+
+
+                                        <td>
+                                           <?php echo
+                                                    $this->db->get_where('mbarang', array('kode_mbarang' => $transaksi->kode_mbarang))->row()->nama;
+                                                ?>
+                                        </td>
+                                        <td>
+                                             <?php echo
+                                                    $this->db->get_where('mbarang', array('kode_mbarang' => $transaksi->kode_mbarang))->row()->satuan;
+                                                ?>
+                                        </td>
+                                        <td>
+                                             <?php echo
+                                                    $this->db->get_where('mbarang', array('kode_mbarang' => $transaksi->kode_mbarang))->row()->uraian;
+                                                ?>
+                                        </td>
+
+                                        <td>
+                                           
+                                              <?php  echo $transaksi->qty; ?>
+                                        </td>
+                                        <td>
+                                            <?php echo $transaksi->status ?>
+                                        </td>
+
+                                        <td>
+                                            <!-- <img src="/application/upload/mbarang/images.jpg"> -->
+                                            <img src="<?php echo base_url(''); ?>upload/mbarang/ <?php echo
+                                                    $this->db->get_where('mbarang', array('kode_mbarang' => $dbarang->kode_mbarang))->row()->foto;
+                                                ?>" width="64" />
+                                        </td>
+
+
+                                        <!-- <td> -->
+                                        <!-- <a href="<?php echo base_url('dbarang/edit/' . $databarang->id_dbarang) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
+                                            <a onclick="deleteConfirm('<?php echo site_url('dbarang/delete/' . $databarang->id_dbarang) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a> -->
+                                        <!-- </td> -->
+                                    
+                                    </tr>
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -48,4 +114,22 @@
     </div>
 </div>
 
+</div>
+<!-- Logout Delete Confirmation-->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Are you sure?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Data yang dihapus tidak akan bisa dikembalikan.</div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a id="btn-delete" class="btn btn-danger" href="#">Delete</a>
+            </div>
+        </div>
+    </div>
 </div>
