@@ -26,24 +26,25 @@
                     <li> <!-- <a href="administrator" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="m"></i> <span class="hide-menu"> DASHBOARD </span>  </a>
  -->
                     <li class="nav-small-cap m-t-10">- -Master Data</li>
-                    <li> <a href="kategori" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="&#xe001;"></i> <span class="hide-menu"> Kategori </span>  </span></span></a>     
+                    <li> <a href="<?= base_url(); ?>/kategori" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="&#xe001;"></i> <span class="hide-menu"> Kategori </span>  </span></span></a>     
                     </li>
-                     <li> <a href="supplier" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="A"></i> <span class="hide-menu"> Supplier </span>  </span></span></a>     
+                     <li> <a href="<?= base_url(); ?>/supplier" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="A"></i> <span class="hide-menu"> Supplier </span>  </span></span></a>     
                     </li>
-                     <li> <a href="mbarang" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="Z"></i> <span class="hide-menu"> Barang </span>  </span></span></a>     
+                     <li> <a href="<?= base_url(); ?>/mbarang" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="Z"></i> <span class="hide-menu"> Barang </span>  </span></span></a>     
                     </li>
             
              </li>
+                
                     <li class="nav-small-cap m-t-10">- -Transaksi</li>
-                    <li> <a href="transaksi_masuk" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="Z"></i> <span class="hide-menu"> Barang Masuk </span>  </span></span></a>     
+                    <li> <a href="<?= base_url(); ?>/transaksi_masuk" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="Z"></i> <span class="hide-menu"> Barang Masuk </span>  </span></span></a>     
                     </li>
-                     <li> <a href="transaksi_keluar" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="&"></i> <span class="hide-menu"> Barang Keluar </span>  </span></span></a>    
+                     <li> <a href="<?= base_url(); ?>/transaksi_keluar" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="&"></i> <span class="hide-menu"> Barang Keluar </span>  </span></span></a>    
 
              </li>
                     <li class="nav-small-cap m-t-10">- -Data</li>
-                    <li> <a href="dbarang" class="w68aves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="A"></i> <span class="hide-menu"> Data Barang </span>  </span></span></a>     
+                    <li> <a href="<?= base_url(); ?>/dbarang" class="w68aves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="A"></i> <span class="hide-menu"> Data Barang </span>  </span></span></a>     
                     </li>
-                     <li> <a href="transaksi" class="waves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="y"></i> <span class="hide-menu"> Transaksi Barang  </span>  </span></span></a>     
+                     <li> <a href="<?= base_url(); ?>/transaksi" class="waves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="y"></i> <span class="hide-menu"> Transaksi Barang  </span>  </span></span></a>     
                     </li>
 
                      <li><a href="<?= base_url('auth') ?>" class="waves-effect"><i class="icon-logout fa-fw"></i> <span class="hide-menu">Log Out</span></a></li>
