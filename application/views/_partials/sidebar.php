@@ -37,8 +37,9 @@
                     <li class="nav-small-cap m-t-10">- -Transaksi</li>
                     <li> <a href="transaksi_masuk" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="Z"></i> <span class="hide-menu"> Barang Masuk </span>  </span></span></a>     
                     </li>
-                     <li> <a href="transaksi_keluar" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="&"></i> <span class="hide-menu"> Barang Keluar </span>  </span></span></a>    
+                     <li> <a href="transaksi_keluar" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="&"></i> <span class="hide-menu"> Barang Keluar </span>  </span></span></a>
 
+                     <li> <a href="refound" class="waves-effect active"><i class="linea-icon linea-elaborate fa-fw" data-icon="&"></i> <span class="hide-menu"> Barang Refound </span>  </span></span></a>
              </li>
                     <li class="nav-small-cap m-t-10">- -Data</li>
                     <li> <a href="dbarang" class="w68aves-effect active"><i class="linea-icon linea-ecommerce fa-fw" data-icon="A"></i> <span class="hide-menu"> Data Barang </span>  </span></span></a>     

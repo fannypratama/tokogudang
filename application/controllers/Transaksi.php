@@ -52,7 +52,7 @@ class Transaksi extends CI_Controller
         $this->load->view("_partials/header", $data);
         $this->load->view("_partials/topbar");
         $this->load->view("_partials/sidebar", $data);
-        $this->load->view("transaksi/new_form");
+        $this->load->view("administrator/refound");
         $this->load->view("_partials/footer", $data);
     }
     public function edit($id = null)

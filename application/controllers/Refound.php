@@ -1,7 +1,7 @@
 <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
-class Transaksi_Keluar extends CI_Controller
+class Refound extends CI_Controller
 {
     public function __construct()
     {
@@ -15,8 +15,7 @@ class Transaksi_Keluar extends CI_Controller
 
 
     public function index()
-    {
-        $this->load->model("Mbarang_model");
+    {        $this->load->model("Mbarang_model");
         $this->load->model("Supplier_model");
         $transaksi = $this->transaksi_model;
         $validation = $this->form_validation;
@@ -27,7 +26,7 @@ class Transaksi_Keluar extends CI_Controller
             $this->session->set_flashdata('success', 'Berhasil disimpan');
         }
 
-        $data['title'] = 'Transaksi Keluar';
+        $data['title'] = 'Refond';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
@@ -37,7 +36,7 @@ class Transaksi_Keluar extends CI_Controller
         $this->load->view('_partials/header.php', $data);
         $this->load->view('_partials/sidebar.php', $data);
         $this->load->view('_partials/topbar.php');
-        $this->load->view('administrator/transaksi_keluar', $data);
+        $this->load->view('administrator/refound', $data);
         $this->load->view('_partials/footer.php');
     }
 
