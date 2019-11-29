@@ -45,6 +45,13 @@ class Dbarang_model extends CI_Model
         return $query->result();
     }
 
+// public function getKodebarang($kode_mbarang)
+//     {
+//         return $this->db->get_where('transaksi', array["kode_mbarang" => $kode_mbarang])->row();
+//         // $this->db->get_where('transaksi', array('kode_mbarang' => $databarang->kode_mbarang))->row()->qty;
+
+//     }
+
 
     public function save()
     {

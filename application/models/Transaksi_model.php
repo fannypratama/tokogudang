@@ -52,6 +52,12 @@ class Transaksi_model extends CI_Model
         return  $this->db->query($query)->result_array();
     }
 
+    public function getKodebarang($kode_mbarang)
+    {
+        return $this->db->get_where($this->_table,["kode_mbarang" => $kode_mbarang])->row();
+
+    }
+
 
     public function save()
     {

@@ -8,6 +8,8 @@ class Dbarang extends CI_Controller
         parent::__construct();
         $this->load->model("dbarang_model");
         $this->load->model("supplier_model");
+        $this->load->model("mbarang_model");
+        $this->load->model("transaksi_model");
         $this->load->model("dbarang_model", "mbarang");
         $this->load->library('form_validation'); {
             is_logged_in();
@@ -36,6 +38,7 @@ class Dbarang extends CI_Controller
     public function add()
     {
         $this->load->model("Mbarang_model");
+        $this->load->model("transaksi_model");
         $this->load->model("Supplier_model");
         $dbarang = $this->dbarang_model;
         $validation = $this->form_validation;
@@ -59,12 +62,12 @@ class Dbarang extends CI_Controller
         $this->load->view("_partials/footer", $data);
     }
 
-    public function edit($id = null)
+    public function edit($kode_mbarang = null)
     {
-        if (!isset($id)) redirect('dbarang');
+        if (!isset($kode_mbarang)) redirect('dbarang');
         $this->load->model("Mbarang_model");
         $this->load->model("Supplier_model");
-
+        $this->load->model("Transaksi_model");
         $dbarang = $this->dbarang_model;
         $validation = $this->form_validation;
         $validation->set_rules($dbarang->rules());
@@ -78,8 +81,9 @@ class Dbarang extends CI_Controller
         $this->session->userdata('email')])->row_array();
 
         $data["mbarang"] = $this->mbarang_model->getAll();
+        $data["transaksi"] = $this->transaksi_model->getKodebarang($kode_mbarang);
         $data["supplier"] = $this->supplier_model->getAll();
-        $data["dbarang"] = $dbarang->getById($id);
+        $data["dbarang"] = $dbarang->getById($kode_mbarang);
         if (!$data["dbarang"]) show_404();
         $this->load->view("_partials/header", $data);
         $this->load->view("_partials/topbar");
