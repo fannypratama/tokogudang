@@ -7,72 +7,58 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
 
-                            <li class="active">Master Barang</li>
+                            <li class="active">Detail transaksi PO</li>
 
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
-    <div class="col-sm-12">
+     <div class="col-sm-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading"><?= $title; ?>
+                            <div class="panel-heading"><a href="<?php echo site_url('datapo') ?>"><i class="fa fa-arrow-left"></i> Back </a> 
                                 <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
                             </div>
                             <div class="panel-wrapper collapse in">
-                                <div class="panel-body">        <!-- DataTables -->
-                     <div class="btn-group pull-right"><a href="<?php echo base_url('mbarang/add') ?>" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add Master Barang</a></div>
-                            <br><br><br>
+                                <div class="panel-body">
+                   
+                                         <br> 
+
                     <div class="table-responsive">
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                     <th width="15">No</th>
-                                    <th>ID Master Barang</th>
-                                    <th>Kode Master Barang</th>
-                                    <th>Nama Barang</th>
-                                    <th>Satuan</th>
-                                    <th>Uraian</th>
-                                    <th>Kategori</th>
-                                    <th>Foto</th>
+                                    <th width="15">No</th>
+                                    <th>Item</th>
+                                    <th>Quantity</th>
+                                    <!-- <th>Satuan</th> -->
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                
                                 <?php $no = 1;
-                                foreach ($mbarang as $masterbarang) : 
+                                
+                                 foreach ($detail as $dtl) : 
                                     ?>
                                     <tr>
+
                                          <td><?php echo $no++; ?></td>
-                                        <td width="150">
-                                            <?php echo $masterbarang->id_mbarang ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $masterbarang->kode_mbarang ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $masterbarang->nama ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $masterbarang->satuan ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $masterbarang->uraian ?>
-                                        </td>
                                         <td>
                                             <?php echo
-                                                    $this->db->get_where('kategori', array('kode_kategori' => $masterbarang->nama_kategori))->row()->nama_kategori;
+                                                    $this->db->get_where('mbarang', array('kode_mbarang' => $dtl->kode_mbarang))->row()->nama;
                                                 ?>
                                         </td>
                                         <td>
-                                            <!-- <img src="/application/upload/mbarang/images.jpg"> -->
-                                            <img src="<?php echo base_url(''); ?>upload/mbarang/<?php echo $masterbarang->foto; ?>" width="64" />
+                                            <?php echo $dtl->qty ?>
                                         </td>
-
-
+                                        <!-- <td>
+                                            <?php echo $dtl->satuan ?>
+                                        </td> -->
                                         <td>
-                                             <a href="<?php echo base_url('mbarang/edit/' . $masterbarang->id_mbarang) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('mbarang/delete/' . $masterbarang->id_mbarang) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                            <a href="<?php echo base_url('datapo/edit/' . $dtl->id_data) ?>" class="btn btn-small "><i class="fa fa-edit"></i> Print</a>
                                         </td>
+                           
+                           
                                     </tr>
                                 <?php endforeach; ?>
 

@@ -81,7 +81,9 @@
                                <div class="form-group row">
                                     <label for="inputPassword4" class="col-sm-3 control-label col-form-label">Gambar Barang</label>
                                     <div class="col-sm-7">
-                                       <input type="file" id="input-file-now-custom-1" class="dropify" data-default-file="<?php echo base_url(''); ?>upload/mbarang/<?php echo $mbarang->foto; ?>" /> </div>
+                                       <img class="img-thumbnail img-responsive" src="<?php echo base_url(''); ?>upload/mbarang/<?php echo $mbarang->foto; ?>" alt="">
+                                        <input type="file" name="foto" class="form-control"> 
+                                    </div>
                                     <div class="invalid-feedback">
                                         <?php echo form_error('foto') ?>
                                     </div>

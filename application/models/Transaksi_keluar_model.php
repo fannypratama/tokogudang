@@ -148,6 +148,7 @@ class Transaksi_model extends CI_Model
         $this->db->insert($this->_table, $this);
 
         $kode_mbarang = $post["kode_mbarang"];
+        
         $qty = $this->db->get_where('dbarang', ["kode_mbarang" => $kode_mbarang])->row()->stok;
         if ($post["status"] === "masuk") {
 

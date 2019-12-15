@@ -1,4 +1,4 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+ <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 class Mbarang_model extends CI_Model
 {
@@ -60,9 +60,14 @@ class Mbarang_model extends CI_Model
         $this->nama_kategori = $post["nama_kategori"];
         $this->foto = $this->_uploadImage();
 
-
-
         $this->db->insert($this->_table, $this);
+
+        $data = [
+            'kode_mbarang' => $post['kode_mbarang'],
+            'status' => 'ada'        ];
+
+
+        $this->db->insert('dbarang', $data);
     }
 
 

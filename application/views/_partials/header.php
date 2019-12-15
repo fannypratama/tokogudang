@@ -57,6 +57,23 @@
         ga('create', 'UA-19175540-9', 'auto');
         ga('send', 'pageview');
     </script>
+    <style type="text/css">
+        [data-role="dynamic-fields"] > .form-inline + .form-inline {
+            margin-top: 0,5em;
+        }
+        
+        [data-role="dynamic-fields"] > .form-inline [data-role="add"] {
+            display: none;
+        }
+        
+        [data-role="dynamic-fields"] > .form-inline:last-child [data-role="add"] {
+            display: inline-block;
+        }
+        
+        [data-role="dynamic-fields"] > .form-inline:last-child [data-role="remove"] {
+            display: none;
+        }
+    </style>
 </head>
 
 <body class="fix-sidebar">

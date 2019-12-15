@@ -107,6 +107,10 @@
                                     </tr>
                             </tbody>
                         </table>
+                       <H4>Sisa Barang : <?php echo
+                                                    $this->db->get_where('dbarang
+                                                        ', array('kode_mbarang' => $transaksi->kode_mbarang))->row()->stok;
+                                                ?> </H4> 
                     </div>
                 </div>
             </div>

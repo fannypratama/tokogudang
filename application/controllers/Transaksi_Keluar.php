@@ -1,4 +1,4 @@
-<?php
+ <?php
 defined('BASEPATH') or exit('No direct script access allowed');
 
 class Transaksi_Keluar extends CI_Controller
@@ -49,10 +49,10 @@ class Transaksi_Keluar extends CI_Controller
         $validation = $this->form_validation;
         $validation->set_rules($transaksi->rules());
 
-        if ($validation->run()) {
-            $transaksi->save();
-            $this->session->set_flashdata('success', 'Berhasil disimpan');
-        }
+        
+        $transaksi->save();
+        $this->session->set_flashdata('success', 'Berhasil disimpan');
+        
 
         $data['title'] = 'Add transaksi';
         $data['user'] = $this->db->get_where('user', ['email' =>
@@ -61,12 +61,15 @@ class Transaksi_Keluar extends CI_Controller
         $data["mbarang"] = $this->Mbarang_model->getAll();
         $data["supplier"] = $this->Supplier_model->getAll();
         $data["transaksi"] = $this->transaksi_model->getAll();
+        $data["transaksi"] = $this->transaksi_model->save();
+           
         $this->load->view("_partials/header", $data);
         $this->load->view("_partials/topbar");
         $this->load->view("_partials/sidebar", $data);
-        $this->load->view("transaksi/new_form");
+        $this->load->view("transaksi/new_form", $data);
         $this->load->view("_partials/footer", $data);
     }
+
     public function edit($id = null)
     {
         // $where = array('id_transaksi' => $id_ts);

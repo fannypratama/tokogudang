@@ -51,7 +51,7 @@
 
                                         </td> -->
                                         <td>
-                                            <?php echo $ts->tanggal_transaksi ?>
+                                            <?php echo date('d-m-Y',strtotime($ts->tanggal_transaksi)) ?>
                                         </td>
                                         <td>
                                             <?php echo $ts->no_transaksi ?>
@@ -72,16 +72,20 @@
                                             <?php echo $ts->kode_supplier ?>
                                         </td> -->
                                         <td>
-                                            <?php echo
-                                                    $this->db->get_where('supplier', array('kode_supplier' => $ts->kode_supplier))->row()->nama_supplier;
+                                            <?php $data = $this->db->get_where('supplier', array('kode_supplier' => $ts->kode_supplier))->result();
+                                            foreach ($data as $key) {
+                                                echo $key->nama_supplier;
+                                            }
                                                 ?>
                                         </td>
                                         <td>
                                             <?php echo $ts->status ?>
                                         </td>
 
-                                        <!-- <td>
-                                            <a href="<?php echo base_url('transaksi/edit/' . $ts->id_transaksi) ?>" class="btn btn-small "><i class="fa fa-edit"></i> Edit</a>
+
+
+                                       <!--  <td>
+                                            <a href="<?php echo base_url('transaksi/edit/' . $ts->id_transaksi) ?>" class="btn btn-small "><i class="fa fa-edit"></i> Print</a>
 
                                             <a onclick="deleteConfirm('<?php echo site_url('transaksi/delete/' . $ts->id_transaksi) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
                                         </td> -->

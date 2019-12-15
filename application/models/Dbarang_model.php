@@ -34,6 +34,10 @@ class Dbarang_model extends CI_Model
     {
         return $this->db->get_where($this->_table, ["id_dbarang" => $id])->row();
     }
+    public function getByKode($id)
+    {
+        return $this->db->get_where($this->_table, ["kode_mbarang" => $id])->row();
+    }
     public function getDbarang()
     {
         $this->db->select('*');

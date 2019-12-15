@@ -44,7 +44,7 @@
             <ul class="m-t-20 chatonline">
                 <li><b>Chat option</b></li>
                 <li>
-                    <a href="javascript:void(0)"><img src="<?= base_url('assets/'); ?>plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="text-success">online</small></span></a>
+                    <a href="javascript:void(0)"><img src="<?= base_url('assets/'); ?>plugins/images/users/varun.jpg" alt="user-img" class="img-circle"> <span>Varun Dhavan <small class="txt-success">online</small></span></a>
                 </li>
                 <li>
                     <a href="javascript:void(0)"><img src="<?= base_url('assets/'); ?>plugins/images/users/genu.jpg" alt="user-img" class="img-circle"> <span>Genelia Deshmukh <small class="text-warning">Away</small></span></a>
@@ -75,7 +75,7 @@
 </div>
 <!-- /.container-fluid -->
 </div>
-<footer class="footer text-center"> <?= date('Y'); ?> &copy; Abdullah </footer>
+<footer class="footer text-center"> <?= date('Y'); ?> &copy; Nakula Sadewa | Inventory </footer>
 </div>
 <!-- /#page-wrapper -->
 </div>
@@ -87,7 +87,22 @@
 <script src="<?= base_url('assets/'); ?>bootstrap/dist/js/bootstrap.min.js"></script>
 <script src="<?= base_url('assets/'); ?>plugins/bower_components/bootstrap-extension/js/bootstrap-extension.min.js"></script>
 <!-- Menu Plugin JavaScript -->
+<script src="<?= base_url('assets/'); ?>js/dnm.js"></script> 
 <script src="<?= base_url('assets/'); ?>plugins/bower_components/sidebar-nav/dist/sidebar-nav.min.js"></script>
+<script src="<?= base_url('assets/'); ?>js/jquery.PrintArea.js" type="text/JavaScript"></script>
+    <script>
+    $(document).ready(function() {
+        $("#print").click(function() {
+            var mode = 'iframe'; //popup
+            var close = mode == "popup";
+            var options = {
+                mode: mode,
+                popClose: close
+            };
+            $("div.printableArea").printArea(options);
+        });
+    });
+    </script>
 <!--slimscroll JavaScript -->
 <script src="<?= base_url('assets/'); ?>js/jquery.slimscroll.js"></script>
 <!--Wave Effects -->
@@ -104,7 +119,7 @@
 <script src="<?= base_url('assets/'); ?>plugins/bower_components/jquery-asColorPicker-master/libs/jquery-asGradient.js"></script>
 <script src="<?= base_url('assets/'); ?>plugins/bower_components/jquery-asColorPicker-master/dist/jquery-asColorPicker.min.js"></script>
 <!-- Date Picker Plugin JavaScript -->
-<script src="<?= base_url('assets/'); ?>plugins/bower_components/bootstrap-datepicker/bootstrap-datepicker.min.js"></script>
+   
 <!-- Date range Plugin JavaScript -->
 <script src="<?= base_url('assets/'); ?>plugins/bower_components/timepicker/bootstrap-timepicker.min.js"></script>
 <script src="<?= base_url('assets/'); ?>plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
@@ -153,6 +168,20 @@
                 drDestroy.init();
             }
         })
+    });
+    </script>
+    <script src="<?= base_url('assets/'); ?> js/jquery.PrintArea.js" type="text/JavaScript"></script>
+    <script>
+    $(document).ready(function() {
+        $("#print").click(function() {
+            var mode = 'iframe'; //popup
+            var close = mode == "popup";
+            var options = {
+                mode: mode,
+                popClose: close
+            };
+            $("div.printableArea").printArea(options);
+        });
     });
     </script>
 <!-- end - This is for export functionality only -->
@@ -280,4 +309,4 @@
 </script>
 </body>
 
-</html>
+</html> 

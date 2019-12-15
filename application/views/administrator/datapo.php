@@ -7,7 +7,7 @@
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
 
-                            <li class="active">Master Barang</li>
+                            <li class="active">Data Po</li>
 
                         </ol>
                     </div>
@@ -19,60 +19,59 @@
                                 <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
                             </div>
                             <div class="panel-wrapper collapse in">
-                                <div class="panel-body">        <!-- DataTables -->
-                     <div class="btn-group pull-right"><a href="<?php echo base_url('mbarang/add') ?>" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add Master Barang</a></div>
-                            <br><br><br>
+                                <div class="panel-body">
+                   
+                                           <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>datapo/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add data Po</a></div>
+                            <br><br><br> 
+
                     <div class="table-responsive">
                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
                             <thead>
                                 <tr>
-                                     <th width="15">No</th>
-                                    <th>ID Master Barang</th>
-                                    <th>Kode Master Barang</th>
-                                    <th>Nama Barang</th>
-                                    <th>Satuan</th>
-                                    <th>Uraian</th>
-                                    <th>Kategori</th>
-                                    <th>Foto</th>
+                                    <th width="15">No</th>
+                                    
+                                    <th>ID Transaksi</th>
+                                    <th>Tanggal Transaksi</th>
+                                 <!--    <th>No Transaksi</th> -->
+                                    <th>Tujuan</th>
+                                    <th>Alamat</th>
+                                    <th>No Po</th>
                                     <th>Action</th>
                                 </tr>
                             </thead>
                             <tbody>
+                                
                                 <?php $no = 1;
-                                foreach ($mbarang as $masterbarang) : 
+                                
+                                 foreach ($datapo as $data) : 
                                     ?>
                                     <tr>
                                          <td><?php echo $no++; ?></td>
-                                        <td width="150">
-                                            <?php echo $masterbarang->id_mbarang ?>
+                                          
+                                        <td>
+                                            <?php echo $data->id_data ?>
                                         </td>
                                         <td>
-                                            <?php echo $masterbarang->kode_mbarang ?>
+                                            <?php echo $data->tanggal_transaksi ?>
                                         </td>
-                                        <td>
-                                            <?php echo $masterbarang->nama ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $masterbarang->satuan ?>
-                                        </td>
-                                        <td>
-                                            <?php echo $masterbarang->uraian ?>
-                                        </td>
-                                        <td>
+                                     <!--    <td>
                                             <?php echo
-                                                    $this->db->get_where('kategori', array('kode_kategori' => $masterbarang->nama_kategori))->row()->nama_kategori;
-                                                ?>
+                                                   $data->no_transaksi ?>
+                                        </td> -->
+                                        <td>
+                                            <?php echo $data->tujuan ?>
                                         </td>
                                         <td>
-                                            <!-- <img src="/application/upload/mbarang/images.jpg"> -->
-                                            <img src="<?php echo base_url(''); ?>upload/mbarang/<?php echo $masterbarang->foto; ?>" width="64" />
+                                            <?php echo $data->alamat ?>
                                         </td>
-
-
                                         <td>
-                                             <a href="<?php echo base_url('mbarang/edit/' . $masterbarang->id_mbarang) ?>" class="btn btn-small"><i class="fa fa-edit"></i> Edit</a>
-                                            <a onclick="deleteConfirm('<?php echo site_url('mbarang/delete/' . $masterbarang->id_mbarang) ?>')" href="#!" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a>
+                                            <?php echo $data->no_po ?>
                                         </td>
+
+                                         <td>
+                                            <a href="<?php echo base_url('datapo/edit/' . $data->no_po) ?>" class="btn btn-box-tool" data-toggle="tooltip" title="Tampilkan Detail" class="btn btn-small text-info"><i class="fa fa-plus"></i>Detail</a> 
+                                            <a href="<?php echo base_url(); ?>datapo/delete/<?= $data->no_po ?>" class="btn btn-small text-danger"><i class="fa fa-trash"></i> Hapus</a> 
+                                        </td>                                     
                                     </tr>
                                 <?php endforeach; ?>
 
@@ -104,3 +103,33 @@
         </div>
     </div>
 </div>
+
+<script type="text/javascript">
+    $(function() {
+    // Remove button click
+    $(document).on(
+        'click',
+        '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
+        function(e) {
+            e.preventDefault();
+            $(this).closest('.form-inline').remove();
+        }
+    );
+    // Add button click
+    $(document).on(
+        'click',
+        '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
+        function(e) {
+            e.preventDefault();
+            var container = $(this).closest('[data-role="dynamic-fields"]');
+            new_field_group = container.children().filter('.form-inline:first-child').clone();
+            new_field_group.find('input').each(function(){
+                $(this).val('');
+            });
+            container.append(new_field_group);
+        }
+    );
+});
+
+    
+</script>

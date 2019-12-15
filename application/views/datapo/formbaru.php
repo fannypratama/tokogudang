@@ -46,79 +46,77 @@ $hasil_10 = acakangka(1);
                     </div>
                     <div class="col-lg-9 col-sm-8 col-md-8 col-xs-12">
                         <ol class="breadcrumb">
-                            <li><a href="<?php echo site_url('transaksi') ?>">Transaksi</a></li>
-                            <li class="active">Barang Keluar</a></li>
+                            <li><a href="<?php echo site_url('datapo') ?>">Data Po</a></li>
+                            <li class="active">Add Data Po</a></li>
                         </ol>
                     </div>
                     <!-- /.col-lg-12 -->
                 </div>
          <div class="col-sm-12">
                         <div class="panel panel-default">
-                            <div class="panel-heading"><a href="<?php echo site_url('transaksi') ?>"><i class="fa fa-arrow-left"></i> Back </a> 
+                            <div class="panel-heading"><a href="<?php echo site_url('datapo') ?>"><i class="fa fa-arrow-left"></i> Back </a> 
                                 <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"><i class="ti-close"></i></a></div>
                             </div>
                             <div class="panel-wrapper collapse in">
                                 <div class="panel-body">
-<br>                            <?php if ($this->session->flashdata('success')) : ?>
+
+
+<br>
+        <div class="row">
+                        <div class="col-sm-12 ">
+                            <?php if ($this->session->flashdata('success')) : ?>
                                 <div class="alert alert-success" role="alert">
                                     <?php echo $this->session->flashdata('success'); ?>
                                 </div>
                             <?php endif; ?>
-                            <form action="<?= base_url('transaksi_keluar/add') ?>" method="post" enctype="multipart/form-data"class="form-horizontal">
-                            <div class="form-group row">
-                                    <label class="col-sm-3 control-label col-form-label">Tanggal Transaksi</label>
-                                    <div class="col-sm-7">
-                                    <div class="input-group">
-                                        <input type="text" class="form-control mydatepicker <?php echo form_error('tanggal_transaksi') ? 'is-invalid' : '' ?>" name="tanggal_transaksi" placeholder="mm/dd/yyyy"> <span class="input-group-addon"><i class="icon-calender"></i></span>
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <?php echo form_error('tanggal_transaksi') ?>
-                                    </div>
-                                </div>
-                                </div>
-                                
-                               
+                            <form action="<?php echo base_url('datapo/add_po') ?>" method="post" enctype="multipart/form-data" class="form-horizontal">
                                 <div class="form-group row">
-                                    <label  class="col-sm-3 control-label col-form-label">No Transaksi</label>
-                                    <div class="col-sm-7">
-                                            <input readonly="" value="<?= $hasil_1, $hasil_2, $hasil_3, $hasil_4, $hasil_5, $hasil_6, $hasil_7, $hasil_8, $hasil_9, $hasil_10; ?>" class="form-control <?php echo form_error('no_transaksi') ? 'is-invalid' : '' ?>" type="text" name="no_transaksi" placeholder="Nomor Transaksi" />
-                                    </div>
-                                    <div class="invalid-feedback">
-                                        <?php echo form_error('no_transaksi') ?>
+                                    <label class="col-sm-3 control-label col-form-label">tanngal Transaksi</label>
+                                    <div class="col-sm-7">    
+                                        <div class="input-group">    
+                                            <input type="text" class="form-control mydatepicker <?php echo form_error('tanggal_transaksi') ? 'is-invalid' : '' ?>" name="tanggal_transaksi" placeholder="mm/dd/yyyy"> <span class="input-group-addon"><i class="icon-calender"></i></span>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <div class="col-sm-7">
-                                <input value="<?= $hasil_1, $hasil_2, $hasil_3, $hasil_4, $hasil_5, $hasil_6, $hasil_7, $hasil_8, $hasil_9, $hasil_10; ?>" class="form-control <?php echo form_error('no_transaksi') ? 'is-invalid' : '' ?>" type="hidden" name="kode_supplier" placeholder="kode_supplier" />
-                                </div>
-                                    <div class="invalid-feedback">
-                                        <?php echo form_error('kode_supplier') ?>
-                                    </div>
-                                </div>
-                                <!-- <div class="form-group row">
-                                    <label class="col-sm-3 control-label col-form-label">Nama Barang</label>
-                                    <div class="col-sm-7">
-                                            <select name="kode_mbarang" id="kode_mbarang" class="form-control">
-                                            <option value="">Select Nama barang</option>
-                                            <?php foreach ($mbarang as $mb) : ?>
-                                                <option value="<?php echo $mb->kode_mbarang ?>"><?php echo $mb->nama ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div> -->
+                            </div>
                                <!--  <div class="form-group row">
-                                    <label class="col-sm-3 control-label col-form-label">Supplier</label>
+                                    <label class="col-sm-3 control-label">No Transaksi</label>
                                     <div class="col-sm-7">
-                                            <select name="kode_supplier" id="kode_supplier" class="form-control">
-                                            <option value="">Select Supplier</option>
-                                            <?php foreach ($supplier as $sp) : ?>
-                                                <option value="<?php echo $sp->kode_supplier ?>"><?php echo $sp->nama_supplier ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div> -->
-
+                                    <select name="no_transaksi" id="nama_kategori" class="form-control">
+                                        <option value="">Select Nomor</option>
+                                        <?php foreach ($transaksi as $ts) : ?>
+                                            <option value="<?php echo $ts->no_transaksi ?>">
+                                                <?php echo $ts->no_transaksi ?></option>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </div>
+                            </div> -->
                                 <div class="form-group row">
+                                    <label class="col-sm-3 control-label col-form-label">Tujuan</label>
+                                    <div class="col-sm-7">
+                                            <input value="" class="form-control <?php echo form_error('tujuan') ? 'is-invalid' : '' ?>" type="text" name="tujuan" placeholder="tujuan" />
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <?php echo form_error('tujuan') ?>
+                                    </div>
+                                </div>
+
+                                    
+                                <div class="form-group row">
+                                    <label class="col-sm-3 control-label col-form-label">Alamat</label>
+                                    <div class="col-sm-7">
+                                            <input value="" class="form-control <?php echo form_error('alamat') ? 'is-invalid' : '' ?>" type="text" name="alamat" placeholder="alamat" />
+                                    </div>
+                                    <div class="invalid-feedback">
+                                        <?php echo form_error('alamat') ?>
+                                    </div>
+                                </div>
+                                <div class="form-group row"> 
+                                    <label class="col-sm-3 control-label">No po</label>
+                                    <div class="col-sm-7">
+                               <input readonly="" class="form-control <?php echo form_error('no_po') ? 'is-invalid' : '' ?>" type="text" name="no_po" placeholder="no_po" value="<?= $hasil_1, $hasil_2, $hasil_3, $hasil_4, $hasil_5, $hasil_6, $hasil_7, $hasil_8, $hasil_9, $hasil_10; ?>" />
+                           </div>
+                       </div>
+                        <div class="form-group row">
                                     <!-- <label class="col-sm-3 control-label col-form-label">Status</label> -->
                                     <div class="col-sm-7">
                                             <input class="form-control <?php echo form_error('status') ? 'is-invalid' : '' ?>" type="hidden" value="keluar" name="status" placeholder="Status" />
@@ -128,7 +126,7 @@ $hasil_10 = acakangka(1);
                                     </div>
                                 </div>
 
-                                                       <div class="form-group row ">
+                                 <div class="form-group row ">
                                     <label class="col-sm-3 control-label">Detail</label>
                                     <div class="col-sm-7">
                                  <div data-role="dynamic-fields">
@@ -148,10 +146,6 @@ $hasil_10 = acakangka(1);
                         <div class="col-sm-9">
                         <label class="sr-only" for="field-value">Qty</label>
                         <input type="number" name='qty[]' class="form-control" id="field-value" placeholder="Qty">
-
-                                    <div class="invalid-feedback">
-                                        <?php echo form_error('qty') ?>
-                                    </div>
                         <!-- <select name="item" id="nama_kategori" class="form-control">
                                         <option value="">QTY</option>
                                         <?php foreach ($transaksi as $ts) : ?>
@@ -187,25 +181,54 @@ $hasil_10 = acakangka(1);
         </div>
     </div>
 
-                                <div class="form-group m-b-0">
-                                    <div class="offset-sm-3 col-sm-7">
+                                   <div class="form-group ">
+                <div class="col-md-3 "></div>
+              <div class="col-md-4">
+                <div class="login-horizental cancel-wp pull-left">
                                 <button type="submit" class="btn btn-success waves-effect waves-light m-r-10" name="btn" value="Save">Submit</button>
-                                <button type="submit" class="btn btn-inverse waves-effect waves-light">Cancel</button>
+
+                                <a class="btn btn-inverse waves-effect waves-light" href="<?php echo site_url('administrator/datapo') ?>"> Cancel</a>
+
                             </form>
-
-
                         </div>
-
-                           <!-- /.row -->
-              
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script type="text/javascript">
+    $(function() {
+    // Remove button click
+    $(document).on(
+        'click',
+        '[data-role="dynamic-fields"] > .form-inline [data-role="remove"]',
+        function(e) {
+            e.preventDefault();
+            $(this).closest('.form-inline').remove();
+        }
+    );
+    // Add button click
+    $(document).on(
+        'click',
+        '[data-role="dynamic-fields"] > .form-inline [data-role="add"]',
+        function(e) {
+            e.preventDefault();
+            var container = $(this).closest('[data-role="dynamic-fields"]');
+            new_field_group = container.children().filter('.form-inline:first-child').clone();
+            new_field_group.find('input').each(function(){
+                $(this).val('');
+            });
+            container.append(new_field_group);
+        }
+    );
+});
+
+    
+</script>
