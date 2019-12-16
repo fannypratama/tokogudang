@@ -162,7 +162,7 @@ Morris.Area({
     Morris.Bar({
         element: 'morris-bar-chart',
         data: [{
-            y: '2006',
+            y: '2001',
             a: 100,
             b: 90,
             c: 60

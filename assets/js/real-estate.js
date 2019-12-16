@@ -2,7 +2,7 @@
     Morris.Bar({
         element: 'morris-bar-chart',
         data: [{
-            y: '2006',
+            y: '2001',
             Sale: 100,
             Rent: 90,
             c: 60

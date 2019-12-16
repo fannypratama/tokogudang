@@ -64,7 +64,7 @@ $hasil_10 = acakangka(1);
                                     <?php echo $this->session->flashdata('success'); ?>
                                 </div>
                             <?php endif; ?>
-                            <form action="<?= base_url('transaksi_keluar/add') ?>" method="post" enctype="multipart/form-data"class="form-horizontal">
+                            <form action="<?= base_url('transaksi_keluar/add_pengganti') ?>" method="post" enctype="multipart/form-data"class="form-horizontal">
                             <div class="form-group row">
                                     <label class="col-sm-3 control-label col-form-label">Tanggal Transaksi</label>
                                     <div class="col-sm-7">
@@ -87,14 +87,14 @@ $hasil_10 = acakangka(1);
                                         <?php echo form_error('no_transaksi') ?>
                                     </div>
                                 </div>
-                                <div class="form-group row">
+                                <!-- <div class="form-group row">
                                     <div class="col-sm-7">
                                 <input value="<?= $hasil_1, $hasil_2, $hasil_3, $hasil_4, $hasil_5, $hasil_6, $hasil_7, $hasil_8, $hasil_9, $hasil_10; ?>" class="form-control <?php echo form_error('no_transaksi') ? 'is-invalid' : '' ?>" type="hidden" name="kode_supplier" placeholder="kode_supplier" />
                                 </div>
                                     <div class="invalid-feedback">
                                         <?php echo form_error('kode_supplier') ?>
                                     </div>
-                                </div>
+                                </div> -->
                                 <!-- <div class="form-group row">
                                     <label class="col-sm-3 control-label col-form-label">Nama Barang</label>
                                     <div class="col-sm-7">

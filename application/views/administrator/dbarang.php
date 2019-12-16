@@ -21,36 +21,35 @@
                             <div class="panel-wrapper collapse in">
                                 <div class="panel-body">
                    
-                                          <!-- <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>kategori/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add kategori</a></div> -->
+                                           <!-- <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>kategori/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i                                                             class="fa fa-plus"></i> Add kategori</a></div> -->
                             <br>
 
                     <div class="table-responsive">
-                        <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th width="15">No</th>
-                                    <th>ID Data Barang</th>
-                                    <th>Nama Barang</th>
-                                    <th>Nama Supplier</th>
-
-                                    <th>Nama Barang</th>
-                                    <th>Satuan</th>
-                                    <th>Uraian</th>
-                                    <!-- <th>Nama Kategori</th> -->
-
-
-                                    <th>Stok</th>
-                                    <th>Status</th>
-                                    <th>Foto</th>
-
-                                    <!-- <th>Action</th> -->
-                                </tr>
+                         <table class="table table-striped" id="myTable" width="100%" cellspacing="0">
+                             <thead>
+                                 <tr>
+                                     <th width="15">No</th>
+                                     <th>ID Data Barang</th>
+                                     <th>Nama Barang</th>
+                                     <th>Nama Supplier</th>
+  
+                                     <th>Nama Barang</th>
+                                     <th>Satuan</th>
+                                     <th>Uraian</th>
+                                     <!-- <th>Nama Kategori</th> -->
+ 
+ 
+                                     <th>Stok</th>
+                                     <th>Status</th>
+                                     <th>Foto</th>
+ 
+                                     <!-- <th>Action</th> -->
+                                 </tr>
                             </thead>
                             <tbody>
                                 <?php $no = 1;
                                  foreach ($dbarang as $databarang) :
-                                    $this->db->select_sum('qty');
-                                    $query = $this->db->get_where('transaksi', array('kode_mbarang' => $databarang->kode_mbarang))->row()->qty; ?>
+                                   ?>
 
                                     <tr>
                                         <td><?php echo $no++; ?></td>
@@ -83,7 +82,7 @@
 
                                         <td>
                                            
-                                            <a href="<?php echo base_url('dbarang/edit/' . $databarang->kode_mbarang) ?>" class="btn btn-small"><i></i>  <?php  echo $query; ?></a>
+                                            <a href="<?php echo base_url('dbarang/edit/' . $databarang->kode_mbarang) ?>" class="btn btn-small"><i></i>  <?php  echo $databarang->stok; ?></a>
                                         </td>
                                         <td>
                                             <?php echo $databarang->status ?>

@@ -61,7 +61,7 @@ $hasil_10 = acakangka(1);
                                 <div class="panel-body">
 <br>                            <?php if ($this->session->flashdata('success')) : ?>
                                 <div class="alert alert-success" role="alert">
-                                    <?php echo $this->session->flashdata('success'); ?>
+                                     <?php echo $this->session->flashdata('success'); ?>
                                 </div>
                             <?php endif; ?>
                             <form action="<?php base_url('transaksi/add') ?>" method="post" enctype="multipart/form-data"class="form-horizontal">

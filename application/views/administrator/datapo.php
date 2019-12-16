@@ -52,7 +52,7 @@
                                             <?php echo $data->id_data ?>
                                         </td>
                                         <td>
-                                            <?php echo $data->tanggal_transaksi ?>
+                                            <?php echo date('d-m-Y',strtotime($data->tanggal_transaksi)) ?>
                                         </td>
                                      <!--    <td>
                                             <?php echo

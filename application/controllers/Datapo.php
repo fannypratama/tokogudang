@@ -21,7 +21,7 @@ class Datapo extends CI_Controller
         $data['title'] = 'Data PO';
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
-
+ 
         $data["datapo"] = $this->datapo_model->getAll();
         $this->load->view('_partials/header.php', $data);
         $this->load->view('_partials/sidebar.php', $data);
@@ -94,7 +94,7 @@ class Datapo extends CI_Controller
      }
 
        public function add_po(){
-        $tanggal_transaksi = $_POST['tanggal_transaksi'];
+        $tanggal_transaksi = date('Y-m-d',strtotime($_post['tanggal_transaksi']));
 
         // $no_transaksi = $_POST['no_transaksi'];
         // $tujuan = $_POST['tujuan'];
@@ -132,7 +132,7 @@ class Datapo extends CI_Controller
 
             array_push($data1, array(
                'kode_mbarang' => $kode_mbarang[$key],
-               'tanggal_transaksi' => $tanggal_transaksi,
+               'tanggal_transaksi' => date('Y-m-d',strtotime($post['tanggal_transaksi'])),
                'qty' => $qty[$key],
                'date_create' => date("Y-m-d H:i:s"),
                'status' => 'keluar',
@@ -149,7 +149,7 @@ class Datapo extends CI_Controller
          }
 
          $this->db->insert_batch('detail', $data);
-
+         $this->db->insert_batch('transaksi', $data1);
          // echo "<pre>";
          // print_r($jml);
          // echo "</pre>";

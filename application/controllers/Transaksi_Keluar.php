@@ -7,6 +7,7 @@ class Transaksi_Keluar extends CI_Controller
     {
         parent::__construct();
         $this->load->model("transaksi_model");
+        $this->load->model("transaksi_keluar_model");
         $this->load->model("mbarang_model");
         $this->load->library('form_validation'); {
             is_logged_in();
@@ -40,6 +41,96 @@ class Transaksi_Keluar extends CI_Controller
         $this->load->view('administrator/transaksi_keluar', $data);
         $this->load->view('_partials/footer.php');
     }
+
+    public function add_pengganti(){
+        $tanggal_transaksi = $_POST['tanggal_transaksi'];
+
+        $no_transaksi = $_POST['no_transaksi'];
+        // $tujuan = $_POST['tujuan'];
+        // $alamat = $_POST['alamat'];
+        // $no_po = $_POST['no_po'];
+        $kode_mbarang = $_POST['kode_mbarang'];
+        $stok = $_POST['qty'];
+        // $satuan = $_POST['satuan'];
+        $qty = $_POST["qty"]; 
+
+        // print_r($_POST);
+        // exit();
+
+
+        $data = array();
+        $data1 = array();
+        $data2 = array(); 
+        $stock;
+        $kode;
+        $qty;
+        $index = 0;
+        foreach ($kode_mbarang as $key => $data_kode_mbarang) {
+            //$jml =$stock = $this->db->get_where('dbarang', ['kode_mbarang' => $kode_mbarang[$key]])->row()->stok;
+            // ambil stok berdasar kode_mbarang
+            // kurangi stok dengan jumlah input
+            // jika nilai pengurangan kurang dari 1 maka proses akan tertolak
+            // jika nilai pengurangan lebih dari 1 maka jalankan proses
+            array_push($data, array(
+               'kode_mbarang' => $kode_mbarang[$key],
+               'qty' => $qty[$key],
+               'status' => 'keluar'
+               // 'satuan' => $satuan[$index],
+               // 'stok' => $stok,
+            ));
+
+
+            array_push($data1, array(
+               'kode_mbarang' => $kode_mbarang[$key],
+               'tanggal_transaksi' => date('Y-m-d',strtotime($post['tanggal_transaksi'])),
+               'qty' => $qty[$key],
+               'date_create' => date("Y-m-d H:i:s"),
+               'status' => 'keluar',
+               
+            ));
+           
+            $kode = $kode_mbarang[$key];
+            $stock = $this->db->get_where('dbarang', ['kode_mbarang' => $kode_mbarang[$key]])->row()->stok;
+            $tqty = $qty[$key];
+
+                $this->transaksi_keluar_model->stok($stock,$kode,$tqty)[$index];
+
+            $index++; 
+         }
+
+         $this->db->insert_batch('transaksi', $data);
+          // $this->db->insert_batch('transaksi', $data1);
+
+         // echo "<pre>";
+         // print_r($jml);
+         // echo "</pre>";
+         // exit();
+         // //$sql = $this->db->insert_batch('detail', $data);
+         //$sql1 = $this->db->insert_batch('transaksi', $data1);
+
+        
+        $this->transaksi_keluar_model->stok($stock,$kode,$tqty); 
+        // $this->transaksi_model->stok($data2);
+         // if ($sql) {
+         //    echo "<script>alert('berhasil')</script>";
+         // }else{ 
+         //     echo "<script>alert('berhasil')</script>";
+         // }
+
+    //     $post = $this->input->post();
+    //     $this->date_create = date("Y-m-d H:i:s");
+    //     $this->tanggal_transaksi = date('Y-m-d',strtotime($post['tanggal_transaksi']));
+    //     $this->no_transaksi = $post["no_transaksi"];
+    //     $this->qty = $post["qty"];
+    //     // $this->alamat = $post["alamat"];
+    //     // $this->no_po = $post["no_po"];
+    //     $this->status = $post["status"];
+        
+        
+
+    // $sql = $this->db->insert('transaksi', $this);
+       redirect('transaksi');
+       }
 
     public function add()
     {

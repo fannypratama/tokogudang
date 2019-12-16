@@ -68,29 +68,29 @@ $hasil_10 = acakangka(1);
                             <?php endif; ?>
                             <form action="<?php base_url('kategori/add') ?>" method="post" enctype="multipart/form-data">
 
-                                <input class="form-control <?php echo form_error('no_transaksi') ? 'is-invalid' : '' ?>" type="hidden" name="no_transaksi" placeholder="Nomor Transaksi" value="<?= $hasil_1, $hasil_2, $hasil_3, $hasil_4, $hasil_5, $hasil_6, $hasil_7, $hasil_8, $hasil_9, $hasil_10; ?>" />
-                                <div class="form-group">
-                                    <label for="supplier">Kode Master Barang</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <select name="kode_mbarang" id="kode_mbarang" class="form-control">
-                                            <option value="">Select Kode master barang</option>
-                                            <?php foreach ($mbarang as $mb) : ?>
-                                                <option value="<?php echo $mb->kode_mbarang ?>"><?php echo $mb->kode_mbarang ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <label for="supplier">Kode Supplier</label>
-                                    <div class="input-group">
-                                        <div class="input-group-addon"><i class="ti-user"></i></div>
-                                        <select name="kode_supplier" id="kode_supplier" class="form-control">
-                                            <option value="">Select Supplier</option>
-                                            <?php foreach ($supplier as $sp) : ?>
-                                                <option value="<?php echo $sp->kode_supplier ?>"><?php echo $sp->kode_supplier ?></option>
-                                            <?php endforeach; ?>
-                                        </select>
+                                <input class="form-control <?php echo form_error('no_transaksi') ? 'is-invalid' : '' ?>" type="hidden" name="no_transaksi" placeholder="Nomor Transaksi" value="<?= $hasil_1, $hasil_2, $hasil_3, $hasil_4, $hasil_5, $hasil_6, $hasil_7, $hasil_8, $hasil_9, $hasil_10; ?>" />    
+                                <div class="form-group">         
+                                    <label for="supplier">Kode    Master Barang</label>
+                                    <div class="input-group">  
+                                        <div class="input-group-addon"><i class="ti -user"></i></div>
+                                        <select name="kode_mbarang" id="kode_mbara ng" class="form-control">
+                                            <option value="">Select Kode master b arang</option>
+                                            <?php foreach ($mbarang as $mb) : ?> 
+                                                <option value="<?php echo $mb->kode_mbarang ?>"><?php echo $mb-> kode_mbarang ?></option>
+                                             <?php endforeach; ?>
+                                        < /select>
+                                    </di v>
+                                </div>  
+                                <div class="form-group"> 
+                                    <label for="supplier">Kode  Supplier</label>
+                                    <div class="input-group"> 
+                                        <div class="input-group-addon"><i class="ti- user"></i></div>
+                                        <select name="kode_supplier" id="kode_suppl ier" class="form-control">
+                                            <option value="">Select Supplier</opti on>
+                                            <?php foreach ($supplier as $sp) : ?> 
+                                                <option value="<?php echo $sp->kode_supplier ?>"><?php echo $sp-> kode_supplier ?></option>
+                                             <?php endforeach; ?>
+                                         </select>
                                     </div>
                                 </div>
                                 <div class="form-group">

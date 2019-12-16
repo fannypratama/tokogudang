@@ -94,7 +94,7 @@ class Dbarang extends CI_Controller
 
     public function delete($id = null)
     {
-        if (!isset($id)) show_404();
+        if (!isset($id)) show_404(); 
 
         if ($this->kategori_model->delete($id)) {
             redirect(site_url('dbarang'));

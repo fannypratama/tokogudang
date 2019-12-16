@@ -1,7 +1,7 @@
-<?php defined('BASEPATH') or exit('No direct script access allowed');
+ <?php defined('BASEPATH') or exit('No direct script access allowed');
 
 
-class Transaksi_model extends CI_Model
+class Transaksi_keluar_model extends CI_Model
 {
     private $_table = "transaksi";
 
@@ -66,123 +66,32 @@ class Transaksi_model extends CI_Model
 
     public function save()
     {
-    //     $kode_mbarang = $_POST['kode_mbarang'];
-    //     $qty = $_POST['qty'];
-        
-
-    //     $data = array();
-    //     $data1 = array();
-    //     $data2 = array(); 
-    //     $stock;
-    //     $kode;
-    //     $qty;
-    //     $index = 0;
-    //     foreach ($kode_mbarang as $key => $data_kode_mbarang) {
-    //         //$jml =$stock = $this->db->get_where('dbarang', ['kode_mbarang' => $kode_mbarang[$key]])->row()->stok;
-    //         // ambil stok berdasar kode_mbarang
-    //         // kurangi stok dengan jumlah input
-    //         // jika nilai pengurangan kurang dari 1 maka proses akan tertolak
-    //         // jika nilai pengurangan lebih dari 1 maka jalankan proses
-    //         array_push($data, array(
-    //            'kode_mbarang' => $kode_mbarang[$key],
-    //            'qty' => $qty[$key],
-    //            // 'satuan' => $satuan[$index],
-               
-    //         ));
-
-
-    //         array_push($data1, array(
-    //            'kode_mbarang' => $kode_mbarang[$key],
-    //            'tanggal_transaksi' => $tanggal_transaksi,
-    //            'qty' => $qty[$key],
-    //            'date_create' => date("Y-m-d H:i:s"),
-    //            'status' => 'keluar',
-               
-    //         ));
-           
-    //         $kode = $kode_mbarang[$key];
-    //         $stock = $this->db->get_where('dbarang', ['kode_mbarang' => $kode_mbarang[$key]])->row()->stok;
-    //         $tqty = $qty[$key];
-
-    //             stok($stock,$kode,$tqty)[$index];
-
-    //         $index++; 
-    //      }
-
-
-    //      exit();
-    //      //$sql = $this->db->insert_batch('detail', $data);
-    //      //$sql1 = $this->db->insert_batch('transaksi', $data1);
-
-        
-    //     stok($stock,$kode,$tqty); 
-    //     // $this->transaksi_model->stok($data2);
-    //      // if ($sql) {
-    //      //    echo "<script>alert('berhasil')</script>";
-    //      // }else{ 
-    //      //     echo "<script>alert('berhasil')</script>";
-    //      // }
-
-    //     $post = $this->input->post();
-    //     $this->date_create = date("Y-m-d H:i:s");
-    //     $this->tanggal_transaksi = date('Y-m-d',strtotime($post['tanggal_transaksi']));
-    //     $this->no_transaksi = $post["no_transaksi"];
-    //     $this->qty = $post["qty"];
-    //     $this->kode_mbarang = $post["kode_mbarang"];
-    //     // $this->kode_supplier = $post["kode_supplier"];
-    //     $this->status = $post["status"];
-        
-
-    // $sql = $this->db->insert('transaksi', $this);
-    //    redirect('dbarang');
-
-       
         $post = $this->input->post();
-        $this->date_create = date("Y-m-d H:i:s");
+         
+          $this->date_create = date("Y-m-d H:i:s");
         $this->tanggal_transaksi = date('Y-m-d',strtotime($post['tanggal_transaksi']));
         $this->no_transaksi = $post["no_transaksi"];
         $this->qty = $post["qty"];
         $this->kode_mbarang = $post["kode_mbarang"];
         $this->kode_supplier = $post["kode_supplier"];
         $this->status = $post["status"];
+       
+
         $this->db->insert($this->_table, $this);
 
-        $kode_mbarang = $post["kode_mbarang"];
-        
-        $qty = $this->db->get_where('dbarang', ["kode_mbarang" => $kode_mbarang])->row()->stok;
-        if ($post["status"] === "masuk") {
+        return $this->db->get_where($this->_table, ["no_transaksi" => $post["no_transaksi"]])->row();
 
-            $stok = $qty + $post['qty'];
-
-            $data = [
-                'kode_supplier' => $post["kode_supplier"],
-                'stok' => $stok
-            ];
-
-            $this->db->insert('dbarang', $data, ['kode_mbarang' => $kode_mbarang]);
-        } elseif ($post["status"] === "keluar") {
-            
-            $stok = $qty - $post['qty'];
-
-            $data = [
-                'stok' => $stok
-            ];
-
-            $this->db->update('dbarang', $data, ['kode_mbarang' => $kode_mbarang]);
-        }
-         elseif ($post["status"] === "refund") {
-            $refund = $this->db->get_where($this->_table, ["no_transaksi" => $post['no_transaksi']])->row()->qty;
-            $stok = $qty - $refund;
-
-            $nilai = $stok + $post['qty'];
-
-            $data = [
-                'stok' => $nilai
-            ];
-
-            $this->db->update('dbarang', $data, ['kode_mbarang' => $kode_mbarang]);
-        }
+        $data[] = [        
+            $this->kode_mbarang = $post["kode_mbarang"],  
+            $this->qty = $post["qty"],
+            // $this->satuan = $post["satuan"],
+            $this->stok = $post["qty"]
+        ];
+            $this->db->insert_batch('detail', $data);
     }
+
+        
+    
         
 
 public function stok($data, $kode, $qty)
@@ -204,7 +113,8 @@ public function stok($data, $kode, $qty)
             $stok = (int)$data - (int)$qty; 
 
             $data = [
-                'stok' => $stok
+                'stok' => $stok,
+                'status' => 'ADA'
             ];
 
             $result = $this->db->update('dbarang', $data, ['kode_mbarang' => $kode]);
@@ -224,7 +134,7 @@ public function stok($data, $kode, $qty)
         //     $this->db->update('dbarang', $data, ['kode_mbarang' => $kode_mbarang]);
         // }
     }
-
+ 
     public function update()
     {
 
