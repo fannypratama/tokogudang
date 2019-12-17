@@ -144,13 +144,12 @@ class Datapo extends CI_Controller
             $stock = $this->db->get_where('dbarang', ['kode_mbarang' => $kode_mbarang[$key]])->row()->stok;
             $tqty = $qty[$key];
 
-            // $this->transaksi_model->stok($stock, $kode, $tqty)[$index];
+            $this->transaksi_model->stok($stock, $kode, $tqty)[$index];
             $datapo = $this->datapo_model;
             $validation = $this->form_validation;
             $validation->set_rules($datapo->rules());
             if ($validation->run()) {
-
-                $this->transaksi_model->stok($stock, $kode, $tqty)[$index];
+                // $this->transaksi_model->stok($stock, $kode, $tqty)[$index];
                 $this->session->set_flashdata('success', 'Berhasil disimpan');
             }
 
