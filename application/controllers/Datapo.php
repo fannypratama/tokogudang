@@ -7,10 +7,10 @@ class Datapo extends CI_Controller
     {
         parent::__construct(); {
             $this->load->model("datapo_model");
-                        $this->load->model("detail_model");
+            $this->load->model("detail_model");
 
-                        $this->load->model("transaksi_model");
-                        
+            $this->load->model("transaksi_model");
+
             is_logged_in();
         }
     }
@@ -31,69 +31,70 @@ class Datapo extends CI_Controller
     }
 
 
-     public function add()
-     {
+    public function add()
+    {
 
-         $this->load->model("datapo_model");
-         $this->load->model("transaksi_model");
-         $this->load->model("Mbarang_model");
+        $this->load->model("datapo_model");
+        $this->load->model("transaksi_model");
+        $this->load->model("Mbarang_model");
         $this->load->model("Supplier_model");
-        
-         $datapo = $this->datapo_model;
-         $validation = $this->form_validation;
-         $validation->set_rules($datapo->rules());
 
-         if ($validation->run()) {
-             $datapo->save();
-             $this->session->set_flashdata('success', 'Berhasil disimpan');
-         }
-         $data['title'] = 'Add Data Po';
-         $data['user'] = $this->db->get_where('user', ['email' =>
-         $this->session->userdata('email')])->row_array();
+        $datapo = $this->datapo_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($datapo->rules());
+
+        if ($validation->run()) {
+            $datapo->save();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        }
+        $data['title'] = 'Add Data Po';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
         $data['gp'] =  $this->db->get("detail")->result();
 
-         // $data["kategori"] = $this->Kategori_model->getAll();
+        // $data["kategori"] = $this->Kategori_model->getAll();
         $data["mbarang"] = $this->Mbarang_model->getAll();
         $data["supplier"] = $this->Supplier_model->getAll();
-         
-         $data["datapo"] = $this->datapo_model->getAll();
-          $data["transaksi"] = $this->transaksi_model->getAll();
-         $this->load->view("_partials/header", $data);
-         $this->load->view("_partials/topbar");
-         $this->load->view("_partials/sidebar", $data);
-         $this->load->view("datapo/formbaru", $data);
-         $this->load->view("_partials/footer", $data);
-     }
-       public function detail($id)
-     {
+
+        $data["datapo"] = $this->datapo_model->getAll();
+        $data["transaksi"] = $this->transaksi_model->getAll();
+        $this->load->view("_partials/header", $data);
+        $this->load->view("_partials/topbar");
+        $this->load->view("_partials/sidebar", $data);
+        $this->load->view("datapo/formbaru", $data);
+        $this->load->view("_partials/footer", $data);
+    }
+    public function detail($id)
+    {
 
 
-         $this->load->model("datapo_model");
-         $this->load->model("detail_model");
-         $datapo = $this->datapo_model;
-         $validation = $this->form_validation;
-         $validation->set_rules($datapo->rules());
+        $this->load->model("datapo_model");
+        $this->load->model("detail_model");
+        $datapo = $this->datapo_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($datapo->rules());
 
-         if ($validation->run()) {
-             $datapo->save();
-             $this->session->set_flashdata('success', 'Berhasil disimpan');
-         }
-         $data['title'] = 'Detail Transaksi PO';
-         $data['user'] = $this->db->get_where('user', ['email' =>
-         $this->session->userdata('email')])->row_array();
+        if ($validation->run()) {
+            $datapo->save();
+            $this->session->set_flashdata('success', 'Berhasil disimpan');
+        }
+        $data['title'] = 'Detail Transaksi PO';
+        $data['user'] = $this->db->get_where('user', ['email' =>
+        $this->session->userdata('email')])->row_array();
 
 
-         // $data["kategori"] = $this->Kategori_model->getAll();
-         $data["datapo"] = $this->datapo_model->getAll();
-          $data["detail"] = $this->detail_model->getById($id);
-         $this->load->view("_partials/header", $data);
-         $this->load->view("_partials/topbar");
-         $this->load->view("_partials/sidebar", $data);
-         $this->load->view("datapo/detail", $data);
-         $this->load->view("_partials/footer", $data);
-     }
+        // $data["kategori"] = $this->Kategori_model->getAll();
+        $data["datapo"] = $this->datapo_model->getAll();
+        $data["detail"] = $this->detail_model->getById($id);
+        $this->load->view("_partials/header", $data);
+        $this->load->view("_partials/topbar");
+        $this->load->view("_partials/sidebar", $data);
+        $this->load->view("datapo/detail", $data);
+        $this->load->view("_partials/footer", $data);
+    }
 
-       public function add_po(){
+    public function add_po()
+    {
         $tanggal_transaksi = $_POST['tanggal_transaksi'];
 
         // $no_transaksi = $_POST['no_transaksi'];
@@ -103,7 +104,7 @@ class Datapo extends CI_Controller
         $kode_mbarang = $_POST['kode_mbarang'];
         $qty = $_POST['qty'];
         // $satuan = $_POST['satuan'];
-        $po = $_POST["no_po"]; 
+        $po = $_POST["no_po"];
 
         // print_r($_POST);
         // exit();
@@ -111,7 +112,7 @@ class Datapo extends CI_Controller
 
         $data = array();
         $data1 = array();
-        $data2 = array(); 
+        $data2 = array();
         $stock;
         $kode;
         $qty;
@@ -123,63 +124,71 @@ class Datapo extends CI_Controller
             // jika nilai pengurangan kurang dari 1 maka proses akan tertolak
             // jika nilai pengurangan lebih dari 1 maka jalankan proses
             array_push($data, array(
-               'kode_mbarang' => $kode_mbarang[$key],
-               'qty' => $qty[$key],
-               // 'satuan' => $satuan[$index],
-               'id_data' => $po,
+                'kode_mbarang' => $kode_mbarang[$key],
+                'qty' => $qty[$key],
+                // 'satuan' => $satuan[$index],
+                'id_data' => $po,
             ));
 
 
             array_push($data1, array(
-               'kode_mbarang' => $kode_mbarang[$key],
-               'tanggal_transaksi' => $tanggal_transaksi,
-               'qty' => $qty[$key],
-               'date_create' => date("Y-m-d H:i:s"),
-               'status' => 'keluar',
-               
+                'kode_mbarang' => $kode_mbarang[$key],
+                'tanggal_transaksi' => $tanggal_transaksi,
+                'qty' => $qty[$key],
+                'date_create' => date("Y-m-d H:i:s"),
+                'status' => 'keluar',
+
             ));
-           
+
             $kode = $kode_mbarang[$key];
             $stock = $this->db->get_where('dbarang', ['kode_mbarang' => $kode_mbarang[$key]])->row()->stok;
             $tqty = $qty[$key];
 
-                $this->transaksi_model->stok($stock,$kode,$tqty)[$index];
+            // $this->transaksi_model->stok($stock, $kode, $tqty)[$index];
+            $datapo = $this->datapo_model;
+            $validation = $this->form_validation;
+            $validation->set_rules($datapo->rules());
+            if ($validation->run()) {
 
-            $index++; 
-         }
+                $this->transaksi_model->stok($stock, $kode, $tqty)[$index];
+                $this->session->set_flashdata('success', 'Berhasil disimpan');
+            }
 
-         $this->db->insert_batch('detail', $data);
+            $index++;
+        }
 
-         // echo "<pre>";
-         // print_r($jml);
-         // echo "</pre>";
-         // exit();
-         // //$sql = $this->db->insert_batch('detail', $data);
-         //$sql1 = $this->db->insert_batch('transaksi', $data1);
+        $this->db->insert_batch('detail', $data);
 
-        
-        $this->transaksi_model->stok($stock,$kode,$tqty); 
+        // echo "<pre>";
+        // print_r($jml);
+        // echo "</pre>";
+        // exit();
+        // //$sql = $this->db->insert_batch('detail', $data);
+        //$sql1 = $this->db->insert_batch('transaksi', $data1);
+
+
+        $this->transaksi_model->stok($stock, $kode, $tqty);
         // $this->transaksi_model->stok($data2);
-         // if ($sql) {
-         //    echo "<script>alert('berhasil')</script>";
-         // }else{ 
-         //     echo "<script>alert('berhasil')</script>";
-         // }
+        // if ($sql) {
+        //    echo "<script>alert('berhasil')</script>";
+        // }else{ 
+        //     echo "<script>alert('berhasil')</script>";
+        // }
 
         $post = $this->input->post();
         $this->date_create = date("Y-m-d H:i:s");
-        $this->tanggal_transaksi = date('Y-m-d',strtotime($post['tanggal_transaksi']));
+        $this->tanggal_transaksi = date('Y-m-d', strtotime($post['tanggal_transaksi']));
         // $this->no_transaksi = $post["no_transaksi"];
         $this->tujuan = $post["tujuan"];
         $this->alamat = $post["alamat"];
         $this->no_po = $post["no_po"];
         $this->status = $post["status"];
-        
-        
 
-    $sql = $this->db->insert('datapo', $this);
-       redirect('datapo');
-       }
+
+
+        $sql = $this->db->insert('datapo', $this);
+        redirect('datapo/add');
+    }
     public function delete($id = null)
     {
         if (!isset($id)) show_404();
@@ -190,13 +199,13 @@ class Datapo extends CI_Controller
         redirect('datapo');
     }
 
-     public function edit($id_data = id_data)
+    public function edit($id_data = id_data)
     {
-       $this->load->model("datapo_model");
-         $this->load->model("detail_model");
-         $datapo = $this->datapo_model;
-         $validation = $this->form_validation;
-         $validation->set_rules($datapo->rules());
+        $this->load->model("datapo_model");
+        $this->load->model("detail_model");
+        $datapo = $this->datapo_model;
+        $validation = $this->form_validation;
+        $validation->set_rules($datapo->rules());
 
         if ($validation->run()) {
             $dbarang->update();
@@ -206,8 +215,8 @@ class Datapo extends CI_Controller
         $data['user'] = $this->db->get_where('user', ['email' =>
         $this->session->userdata('email')])->row_array();
 
-         $data["datapo"] = $this->datapo_model->getById($id_data);
-          $data["detail"] = $this->detail_model->getById($id_data);
+        $data["datapo"] = $this->datapo_model->getById($id_data);
+        $data["detail"] = $this->detail_model->getById($id_data);
         $data["total"] = $this->datapo_model->getKodepo($id_data);
         // $data["dbarang"] = $dbarang->getAll();
         // if (!$data["transaksi"]) show_404();
@@ -217,5 +226,4 @@ class Datapo extends CI_Controller
         $this->load->view("administrator/utility", $data);
         $this->load->view("_partials/footer");
     }
-
 }
