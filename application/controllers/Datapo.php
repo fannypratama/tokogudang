@@ -136,7 +136,7 @@ class Datapo extends CI_Controller
                 'tanggal_transaksi' => $tanggal_transaksi,
                 'qty' => $qty[$key],
                 'date_create' => date("Y-m-d H:i:s"),
-                'status' => 'keluar',
+                'status' => 'keluar'
 
             ));
 
@@ -157,7 +157,8 @@ class Datapo extends CI_Controller
         }
 
         $this->db->insert_batch('detail', $data);
-
+        $this->db->insert_batch('transaksi', $data1);
+        
         // echo "<pre>";
         // print_r($jml);
         // echo "</pre>";

@@ -19,8 +19,9 @@
                                 <div class="panel-action"><a href="#" data-perform="panel-collapse"><i class="ti-minus"></i></a> <a href="#" data-perform="panel-dismiss"></i></a></div>
                             </div>
                             <div class="panel-wrapper collapse in">
-                                <div class="panel-body">                   
-                                          <!-- <div class="btn-group pull-right"><a href="<?php echo base_url(); ?>transaksi/add" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Add kategori</a></div> -->
+                                <div class="panel-body"> 
+                  
+                                          <!-- <div class="btn-group pull-right"><a href="<?php echo base_url("index.php/export/export"); ?>" class="fcbtn btn btn-outline btn-success btn-1d" role="button" data-toggle="tooltip" title="Add Admin" width="100%"><i class="fa fa-plus"></i> Export To Excel</a></div>  -->
                             <br><br>
 
                     <div class="table-responsive">

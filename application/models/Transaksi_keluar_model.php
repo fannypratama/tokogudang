@@ -200,16 +200,19 @@ public function stok($data, $kode, $qty)
         //     $this->db->update('dbarang', $data, ['kode_mbarang' => $kode]);
         // } else
         if ($post["status"] === "keluar") {
-            
-            $stok = (int)$data - (int)$qty; 
 
-            $data = [
-                'stok' => $stok
-            ];
+            if ($qty < $data) {
 
-            $result = $this->db->update('dbarang', $data, ['kode_mbarang' => $kode]);
+                $stok = (int) $data - (int) $qty;
 
-            echo $result ? 'true' : 'false';
+                $minus = [
+                    'stok' => $stok
+                ];
+
+                $result = $this->db->update('dbarang', $minus, ['kode_mbarang' => $kode]);
+
+                echo $result ? 'true' : 'false';
+            }
         }
         //  elseif ($post["status"] === "refund") {
         //     $refund = $this->db->get_where($this->_table, ["no_transaksi" => $post['no_transaksi']])->row()->qty;
@@ -337,4 +340,5 @@ public function stok($data, $kode, $qty)
     {
         return $this->db->delete($this->_table, array("id_transaksi" => $id));
     }
+    
 }
