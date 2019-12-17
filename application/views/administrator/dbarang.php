@@ -1,4 +1,4 @@
-<div id="page-wrapper">
+ <div id="page-wrapper">
             <div class="container-fluid">
                 <div class="row bg-title">
                     <div class="col-lg-3 col-md-4 col-sm-4 col-xs-12">
@@ -49,8 +49,8 @@
                             <tbody>
                                 <?php $no = 1;
                                  foreach ($dbarang as $databarang) :
-                                    $this->db->select_sum('qty');
-                                    $query = $this->db->get_where('transaksi', array('kode_mbarang' => $databarang->kode_mbarang))->row()->qty; ?>
+                                    // $this->db->select_sum('qty');
+                                    ?>
 
                                     <tr>
                                         <td><?php echo $no++; ?></td>
@@ -83,7 +83,7 @@
 
                                         <td>
                                            
-                                            <a href="<?php echo base_url('dbarang/edit/' . $databarang->kode_mbarang) ?>" class="btn btn-small"><i></i>  <?php  echo $query; ?></a>
+                                            <a href="<?php echo base_url('dbarang/edit/' . $databarang->kode_mbarang) ?>" class="btn btn-small"><i></i>  <?php  echo $databarang->stok; ?></a>
                                         </td>
                                         <td>
                                             <?php echo $databarang->status ?>
