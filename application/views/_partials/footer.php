@@ -123,9 +123,7 @@
 <!-- Date range Plugin JavaScript -->
 <script src="<?= base_url('assets/'); ?>plugins/bower_components/timepicker/bootstrap-timepicker.min.js"></script>
 <script src="<?= base_url('assets/'); ?>plugins/bower_components/bootstrap-daterangepicker/daterangepicker.js"></script>
-<script>
-    <!-- start - This is for export functionality only 
-    -->
+<!-- <script> -->
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
 <script src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
