@@ -17,9 +17,9 @@
         Morris.Bar({
           element: 'graph',
           data: <?php echo $data;?>,
-          xkey: 'bulan',
-          ykeys: ['barang_masuk', 'barang_keluar'],
-          labels: ['Barang Masuk', 'Barang Keluar']
+          xkey: 'kode_mbarang',
+          ykeys: ['stok'],
+          labels: ['jumlah']
         });
     </script>
   </body>

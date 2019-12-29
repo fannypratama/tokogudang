@@ -5,8 +5,8 @@ class mChartBaru extends CI_Model
 
     public function get_data()
     {
-        $this->db->select('barang_masuk, barang_keluar, bulan');
-        $result = $this->db->get('chart');
+        $this->db->select('stok, kode_mbarang');
+        $result = $this->db->get('dbarang');
         return $result;
     }
 }

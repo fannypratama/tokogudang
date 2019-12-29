@@ -130,16 +130,13 @@ class Datapo extends CI_Controller
                 'id_data' => $po,
             ));
 
-            $post = $this->input->post();
-            $this->date_create = date("Y-m-d H:i:s");
-            $tanggal_transaksi = date('Y-m-d', strtotime($post['tanggal_transaksi']));
 
             array_push($data1, array(
                 'kode_mbarang' => $kode_mbarang[$key],
                 'tanggal_transaksi' => $tanggal_transaksi,
                 'qty' => $qty[$key],
                 'date_create' => date("Y-m-d H:i:s"),
-                'status' => 'keluar',
+                'status' => 'keluar'
 
             ));
 
@@ -161,7 +158,7 @@ class Datapo extends CI_Controller
 
         $this->db->insert_batch('detail', $data);
         $this->db->insert_batch('transaksi', $data1);
-
+        
         // echo "<pre>";
         // print_r($jml);
         // echo "</pre>";

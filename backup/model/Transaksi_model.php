@@ -210,8 +210,6 @@ class Transaksi_model extends CI_Model
                 $result = $this->db->update('dbarang', $minus, ['kode_mbarang' => $kode]);
 
                 echo $result ? 'true' : 'false';
-            } else {
-                echo "<script type=\"text/javascript\">alert('Stok terbatas');</script>";
             }
         }
         //  elseif ($post["status"] === "refund") {

@@ -30,9 +30,7 @@
             <li class="nav-small-cap m-t-10"> Admin</li>
             <li> <a href="<?= base_url(); ?>/kategori" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="&#xe001;"></i> <span class="hide-menu"> Grafik </span> </span></span></a>
             </li>
-            <li> <a href="<?= base_url(); ?>/supplier" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="A"></i> <span class="hide-menu"> Export </span> </span></span></a>
-            </li>
-            <li> <a href="<?= base_url(); ?>/mbarang" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="Z"></i> <span class="hide-menu"> Profile </span> </span></span></a>
+            <li> <a href="<?= base_url(); ?>transaksi/user" class="waves-effect active"><i class="linea-icon linea-basic fa-fw" data-icon="A"></i> <span class="hide-menu"> Export </span> </span></span></a>
             </li>
 
             </li>
